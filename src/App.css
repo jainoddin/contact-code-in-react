@@ -1,38 +1,178 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.contact {
+  overflow-y: auto;
+  max-height: 700px;
+  background-image: url("https://advocate.ischooll.com/public/backEnd/img/body-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  .contact-header p {
+    font-family: var(--base_font);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #415094; /* make the text bold */
+    padding: 20px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .contact-header-inner {
+    font-size: 0; /* to remove the whitespace between inline-block elements */
   }
-  to {
-    transform: rotate(360deg);
+  
+  .contact-list-title {
+    display: inline-block;
+    margin-right: 10px; /* add some space between the p tag and the button */
   }
+  
+  .contact-header-btn {
+    display: inline-block;
+    border: none;
+    
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    color: #ffffff; /* assuming you want white text color */
+    background-size: 200% auto;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 15px;
+    font-weight: 350;
+  }
+  .contact-icon{
+    width: 20px;
+    height: 20px;
+    padding-bottom: 2px;
+    
+  }
+  .contact-header-textbox{
+    display: inline-block;
+    position: relative;
+    left: 20%;
+  }
+  .contact-header-textfeild{
+    width: 100%; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: transparent;
+    background-image: url('https://clipground.com/images/searchicon-png.png');
+    background-size: 30px 30px;
+    background-position: 4px 4px; 
+    background-repeat: no-repeat;
+    padding: 8px 8px 8px 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    outline: none;
+  }
+  .contact-header-textfeild:focus {    
+    border-bottom: 1px solid black;
+    box-shadow: none;
+  }
+  .contact-header-icons{
+    border: 1px solid blue;
+    width: 16.6%;
+    display: inline-block;
+    position: relative;
+    left: 42%;
+    border-radius: 25px;
+  }
+  .contact-header-icons i{
+    border: 1px solid blue;
+    font-size: 15px;
+    padding: 9px;
+    background-color: transparent;
+    color:#415094 ;
+    border-left: none ;
+    border-top: none;
+    border-bottom: none;
+
+  }
+  .contact-header-icon i:hover {
+    background: -moz-linear-gradient( #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient( #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient( #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 30%, #c738d8 100%, #7c32ff 20%);
+    color: #ffffff; /* assuming you want white text color */
+  }
+  .none-dispaly{
+    display: none;
+  }
+  
+  .contact-body{
+    margin: 10px;
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 0px;
+    padding-left: 10px;
+    padding-bottom: 60px;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .contact-header-tr{
+    border: 1px solid #ECEEF4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    
+   
+  }
+  .contact-header-tr th{
+    padding: 20px;
+    color: #415094;
+  }
+  .contact-body-tr{
+    border: 1px solid #ECEEF4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    
+  
+  }
+  .contact-body-tr td{
+    padding: 20px;
+    color: #828bb2;
+  }
+  #icon-id{
+    font-size: 14px;
+    
+  }
+  .select-btn{
+    background-color:transparent;
+    border: 1px solid #415094 ;
+    padding-top: 5px;
+    border-radius: 25px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+    padding-right: 25px;
+    color: #415094;
+    font-size: 13px;
+  }
+  .select-btn:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+
+  }
+  .contact-footer{
+    padding:20px;
+  }
+  
+  
+  
+ 
 }
+
