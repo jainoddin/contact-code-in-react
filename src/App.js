@@ -1,5 +1,15 @@
 import './App.css';
 import { GoPlus } from "react-icons/go";
+import { GoFile } from "react-icons/go";
+import { AiOutlineFilePdf } from "react-icons/ai";
+import { AiOutlineFileJpg } from "react-icons/ai";
+import { AiOutlineFileText } from "react-icons/ai";
+import { AiOutlinePrinter } from "react-icons/ai";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
+
+
+
 
 function App() {
   const data = [
@@ -123,18 +133,19 @@ function App() {
       EMAIL: 'stebbe2@plala.or.jp',
       ACTIONS: 'SELECT'
     },
-    {
-      SL: 4,
-      NAME: 'Tabitha',
-      CATEGORY: 'Lawyer',
-      MOBILE: '+33 221 852 8164',
-      EMAIL: 'tvarty3@github.io',
-      ACTIONS: 'SELECT'
-    }
+    
   ];
   return (
   <>
- <div className='contact'>
+  <div style={{overflow:"hidden"}}>
+  <div class="row" style={{overflow:"hidden"}}>
+      <div class="col-sm-2 between-sm-3-and-4" ><h1 className='sidebar'>Sidebar</h1>
+    
+      </div>
+      <div class="col-sm-9 contact">
+        <div className='container'>
+        
+  
   <div className='contact-components'>
     <div className='contact-header'>
     <p className='contact-list-title'>Contact List</p>
@@ -144,14 +155,16 @@ function App() {
     </div>
     <div className='contact-header-icons'>
       <div className='contact-header-icon'>
-      <i class='fa fa-file-text-o fa-5x'className='none-dispaly'></i>  
-        <i class='fa fa-file fa-5x' style={{marginLeft:'25px'}}></i>
-        
-      <i class='fa fa-download fa-5x' ></i>
-      <i class='fa fa-print fa-5x' ></i>
       
-      <i class='fa fa-paste fa-5x'></i>
-      <i class='fa fa-columns fa-5x' style={{borderRight:"none"}}></i>
+        <i  style={{marginLeft:'25px'}}><GoFile /></i>
+        
+      <i><AiOutlineFilePdf /></i>
+      <i><AiOutlineFileJpg /></i>
+      
+      <i><AiOutlineFileText />
+      </i>
+      <i style={{borderRight:"none"}}><AiOutlinePrinter />
+      </i>
       </div>
     </div>
     </div>
@@ -184,16 +197,36 @@ function App() {
       </table>
       </div>
 
-    </div>
+   
 <div>
   <div className='contact-footer'>
     <p>js.Showing page 1 js.of 4</p>
+    <div className='contant-page-btn'>
+      <button className='contact-footer-btn'><AiOutlineArrowLeft />      </button>
+      <button className='contact-footer-btn active'>1</button>
+      <button className='contact-footer-btn'>2</button>
+      <button className='contact-footer-btn'>3</button>
+      <button className='contact-footer-btn'>4</button>
+
+      <button className='contact-footer-btn'><AiOutlineArrowRight />
+      </button>
+    </div>
   </div>
+  <p className='contact-footer-bottom'>Copyright © 2020 - 2021 All rights reserved | This application is made by <span className='contact-footer-spam'>Codethemes</span></p>
+
 </div>
   </div>
 
  </div>
  
+
+
+
+
+
+          </div></div>
+    </div>
+    </div>
   </>
   );
 }

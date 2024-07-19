@@ -1,18 +1,23 @@
 .contact {
   overflow-y: auto;
+  overflow-x: hidden;
   max-height: 700px;
   background-image: url("https://advocate.ischooll.com/public/backEnd/img/body-bg.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
   width: 100vw;
+}
   .contact-header p {
     font-family: var(--base_font);
     font-weight: 500;
-    font-size: 18px;
+    font-size: 22px;
     line-height: 27px;
     color: #415094; /* make the text bold */
     padding: 20px;
+    padding-top: 5px;
+    font-family: "Times New Roman", serif;
+
   }
   .contact-header-inner {
     font-size: 0; /* to remove the whitespace between inline-block elements */
@@ -40,56 +45,80 @@
     transition: all 0.4s ease 0s;
     border-radius: 25px;
     padding-left: 10px;
-    padding-right: 15px;
-    font-weight: 350;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 500;
+    font-size: 12px;
+    font-family: "Times New Roman", serif;
   }
   .contact-icon{
     width: 20px;
     height: 20px;
     padding-bottom: 2px;
-    
+    padding-top: 15px;
   }
   .contact-header-textbox{
     display: inline-block;
     position: relative;
-    left: 20%;
+    left: 10%;
   }
   .contact-header-textfeild{
-    width: 100%; 
+    width: 80%; 
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     background-color: transparent;
-    background-image: url('https://clipground.com/images/searchicon-png.png');
-    background-size: 30px 30px;
-    background-position: 4px 4px; 
+    background-image: url('https://static-00.iconduck.com/assets.00/search-icon-2048x2048-cmujl7en.png');
+    background-size: 15px 15px;
+    background-position: 4px 4px;
+    background-position-y: 15px; 
     background-repeat: no-repeat;
     padding: 8px 8px 8px 30px;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #828bb2;
     border-radius: 0px;
     outline: none;
+    color: #828bb2;
+     
+
+    
   }
-  .contact-header-textfeild:focus {    
-    border-bottom: 1px solid black;
+  .contact-header-textfeild::placeholder {
+    font-size: 11px; /* adjust the font size to your liking */
+    font-weight: bold;
+    color: #828bb2;
+   
+  }
+  .contact-header-textfeild:focus {
+    border-bottom: 2px solid #828bb2;
     box-shadow: none;
-  }
+    color: #828bb2;
+    size: 10px;
+    animation: borderAnim 0.3s ease-in-out;
+    
+}
+
+
   .contact-header-icons{
-    border: 1px solid blue;
-    width: 16.6%;
+    border: 1px solid #828bb2;
+    width: 27%;
+    height: 28px;
     display: inline-block;
     position: relative;
-    left: 42%;
+    left: 19%;
     border-radius: 25px;
   }
   .contact-header-icons i{
-    border: 1px solid blue;
-    font-size: 15px;
-    padding: 9px;
+    border: 1px solid #828bb2;
+    font-size: 13px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
     background-color: transparent;
-    color:#415094 ;
+    color:#485696 ;
     border-left: none ;
     border-top: none;
     border-bottom: none;
@@ -114,7 +143,7 @@
     background-color: white;
     border-radius: 8px;
     padding: 0px;
-    padding-left: 10px;
+    padding-left: 0px;
     padding-bottom: 60px;
     width: 100%;
     margin: 10px 0;
@@ -129,7 +158,11 @@
   }
   .contact-header-tr th{
     padding: 20px;
-    color: #415094;
+    color: #4c5a96;
+    font-family: "Times New Roman", serif;
+    font-size: 12px;
+
+
   }
   .contact-body-tr{
     border: 1px solid #ECEEF4;
@@ -174,5 +207,90 @@
   
   
  
+
+
+
+
+
+
+
+
+
+
+  .between-sm-3-and-4 {
+    width: 90%;
+    max-height: 700px;
+    background-image: url("https://advocate.ischooll.com/public/backEnd/img/body-bg.jpg");
+
+  }
+  .sidebar{
+    color: #828bb2;
+    font-family: Helvetica;
+    padding: 10px;
+    padding-left: 30px;
+
+  }
+
+
+.container {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
+.row{
+  width: 110%;
+}
+
+.contact-footer {
+  display: flex;
+  align-items: center; /* vertically center the elements */
+}
+.contact-footer p{
+  padding-top: 12px;
+  color: #8743fd;
+}
+
+.contact-footer p, .contact-footer-btn {
+  margin-right: 10px; /* add some space between elements */
+}
+.contant-page-btn{
+  position: relative;
+  left: 58%;
+  padding-bottom: 10px;
+}
+.contant-page-btn button{
+  border: none;
+  background-color: white;
+  border-radius: 5px;
+  color: gray;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.contact-footer-bottom{
+  font-size: 16px;
+  font-family: Helvetica;
+  color: #828bb2;
+text-align: center;
+padding: 10px;
+
+}
+.contact-footer-spam{
+  color: red;
+}
+.contant-page-btn button.active {
+  background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+  background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+  background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+  background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+  background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+  color: #ffffff;
+}
+
+
+
+
 
