@@ -1,0 +1,394 @@
+.contact {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 700px;
+    background-image: url("https://advocate.ischooll.com/public/backEnd/img/body-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+  }
+    .contact-header p {
+      font-family: var(--base_font);
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 27px;
+      color: #415094; /* make the text bold */
+      padding: 20px;
+      padding-top: 5px;
+      font-family: "Times New Roman", serif;
+  
+    }
+    .contact-header-inner {
+      font-size: 0; /* to remove the whitespace between inline-block elements */
+    }
+    
+    .contact-list-title {
+      display: inline-block;
+      margin-right: 10px; /* add some space between the p tag and the button */
+      position: relative;
+      top: 4px;
+    }
+    
+    .contact-header-btn {
+      display: inline-block;
+      border: none;
+      
+      background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      color: #ffffff; /* assuming you want white text color */
+      background-size: 200% auto;
+      -webkit-transition: all 0.4s ease 0s;
+      -moz-transition: all 0.4s ease 0s;
+      -o-transition: all 0.4s ease 0s;
+      transition: all 0.4s ease 0s;
+      border-radius: 25px;
+      padding-left: 10px;
+      padding-right: 25px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-weight: 500;
+      font-size: 12px;
+      font-family: "Times New Roman", serif;
+    }
+    .contact-icon{
+      width: 14px;
+      height: 14px;
+      padding-bottom: 1px;
+      padding-top: 0px;
+      position: relative;
+      top: -1px;
+    }
+    .contact-header-textbox{
+      display: inline-block;
+      position: relative;
+      left: 10%;
+    }
+    .contact-header-textfeild{
+      width: 80%; 
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: transparent;
+      background-image: url('https://static-00.iconduck.com/assets.00/search-icon-2048x2048-cmujl7en.png');
+      background-size: 15px 15px;
+      background-position: 4px 4px;
+      background-position-y: 15px; 
+      background-repeat: no-repeat;
+      padding: 8px 8px 8px 30px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid #828bb2;
+      border-radius: 0px;
+      outline: none;
+      color: #828bb2;
+       
+      
+      
+    }
+    .contact-header-textfeild::placeholder {
+      font-size: 11px; /* adjust the font size to your liking */
+      font-weight: bold;
+      color: #828bb2;
+     
+    }
+    .contact-header-textfeild:focus {
+      border-bottom: 2px solid #828bb2;
+      box-shadow: none;
+      color: #828bb2;
+      size: 10px;
+      animation: borderAnim 0.3s ease-in-out;
+      
+  }
+  
+  .contact-header-icons {
+    border: 1px solid #828bb2;
+    width: 27%;
+    height: 28px;
+    display: inline-block;
+    position: relative;
+    left: 21%;
+    top: 3px;
+    border-radius: 25px;
+    
+    
+  }
+  
+  .contact-header-icons i {
+    border: 1px solid #828bb2;
+    font-size: 13px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: transparent;
+    color: #485696;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    position: relative;
+   
+  }
+  
+  .contact-header-icon i:hover {
+    background: -moz-linear-gradient(#c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(#c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(#c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 30%, #c738d8 100%, #7c32ff 20%);
+    color: #ffffff;
+    cursor: pointer;
+    
+  }
+  
+  .tooltips {
+    visibility: hidden;
+    position: absolute;
+    top: 30px;
+    left: 27px;
+    color: #8743fd;
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+    color: black;
+    padding-top: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    border: 1px solid black;
+    max-height: 0;
+    transition-property: max-height, visibility;
+   
+     transition-delay: 1s;
+     font-family:sans-serif;
+  }
+  
+  .contact-header-icon i:hover > .tooltips {
+    visibility: visible;
+    max-height: 100px; /* or any other value */
+  }
+  .contact-header-icon i:not(:hover) > .tooltips {
+    transition-duration: 0s; /* make it disappear instantly */
+    visibility: hidden;
+    max-height: 0;
+  }
+  
+    .contact-body{
+      margin: 10px;
+    }
+  
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 0px;
+      padding-left: 0px;
+      padding-bottom: 60px;
+      width: 100%;
+      margin: 10px 0;
+    }
+    .contact-header-tr{
+      border: 1px solid #ECEEF4;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      
+     
+    }
+    .contact-header-tr th{
+      padding: 20px;
+      color: #4c5a96;
+      font-family: "Times New Roman", serif;
+      font-size: 12px;
+  
+  
+    }
+    .contact-body-tr{
+      border: 1px solid #ECEEF4;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      
+    
+    }
+    .contact-body-tr td{
+      padding: 20px;
+      color: #828bb2;
+    }
+    #icon-id{
+      font-size: 14px;
+      
+    }
+    .select-btn{
+      background-color:transparent;
+      border: 1px solid #415094 ;
+      padding-top: 5px;
+      border-radius: 25px;
+      padding-left: 25px;
+      padding-bottom: 5px;
+      padding-right: 25px;
+      color: #415094;
+      font-size: 13px;
+    }
+    .select-btn:hover{
+      background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+      background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+      color: #ffffff; /* assuming you want white text color */
+  
+    }
+    .contact-footer{
+      padding:20px;
+    }
+    
+    
+    
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    .between-sm-3-and-4 {
+      width: 90%;
+      max-height: 700px;
+      background-image: url("https://advocate.ischooll.com/public/backEnd/img/body-bg.jpg");
+  
+    }
+    .sidebar{
+      color: #828bb2;
+      font-family: Helvetica;
+      padding: 10px;
+      padding-left: 30px;
+  
+    }
+  
+  
+  .container {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .row{
+    width: 110%;
+  }
+  
+  .contact-footer {
+    display: flex;
+    align-items: center; /* vertically center the elements */
+  }
+  .contact-footer p{
+    padding-top: 12px;
+    color: #8743fd;
+  }
+  
+  .contact-footer p, .contact-footer-btn {
+    margin-right: 10px; /* add some space between elements */
+  }
+  .contact-page-btn{
+    position: relative;
+    left: 60%;
+    padding-bottom: 10px;
+  }
+  .contact-page-btn button {
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    color: gray;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .contact-footer-bottom{
+    font-size: 16px;
+    font-family: Helvetica;
+    color: #828bb2;
+  text-align: center;
+  padding: 10px;
+  
+  }
+  .contact-footer-spam{
+    color: red;
+  }
+  .contact-page-btn button.active {
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff;
+  }
+  
+  .select-dropdown {
+    position: absolute;
+    right: 35px;
+    background-color: #fff;
+   border-radius: 5px;
+    padding: 4px;
+    display: none;
+    width: 15%;
+  margin-top: 3px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .select-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .select-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 12px;
+   padding-left: 80px;
+   font-family: Arial, Helvetica, sans-serif;
+  
+  }
+  
+  .select-dropdown li:hover {
+    background-color: #fcfafa;
+  }
+  .contact-list-edit{
+    padding-left: 100px !important;
+  }
+  .select-btn.selected {
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff;
+  }
+  
+  /* Hide print-only table during regular display */
+  .print-only {
+    display: none;
+  }
+  
+  /* Show print-only table during printing */
+  @media print {
+    .contact-body .card,
+    .contact-footer,
+    .contact-header,
+    .contact-header-icons {
+      display: none;
+    }
+    .print-only {
+      display: block;
+    }
+  }
+  
+  
+  

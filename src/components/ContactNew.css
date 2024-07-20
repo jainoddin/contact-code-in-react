@@ -1,0 +1,215 @@
+.contact-header-2 p {
+  font-family: var(--base_font);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  color: #415094; /* make the text bold */
+  padding: 0px;
+  padding-top: 5px;
+  padding-left: 15px;
+  font-family: "Times New Roman", serif;
+}
+.contact-list-title {
+  display: inline-block;
+  margin-right: 10px; /* add some space between the p tag and the button */
+  position: relative;
+  top: 4px;
+}
+.form-group{
+    padding: 25px;
+}
+.control-label{
+    font-weight: 500;
+  font-size: 14px;
+  line-height: 27px;
+  color: #828bb2; /* make the text bold */
+  padding: 0px;
+  padding-top: 5px;
+  padding-left: 20px;
+  font-family: "Times New Roman", serif;
+    
+}
+.contact-lable2{
+    font-weight: 500;
+  font-size: 14px;
+  line-height: 27px;
+  color: green; /* make the text bold */
+  padding: 0px;
+  padding-top: 5px;
+  padding-left: 15px;
+  font-family: "Times New Roman", serif;
+  position: relative;
+  left: 68%;
+  cursor: pointer;
+    
+}
+.contact-dropdownlist{
+    padding-left: 14px;
+}
+.contact-lable2-icon{
+    padding-bottom: 5px;
+    width: 13%;
+    height: 13%;
+}
+.contact-down-icon{
+    position: relative;
+    left: 82%;
+}
+.contact-dropdownlist-btn{
+    border: 1px solid #dcdde4;
+    background-color: transparent;
+    border-radius: 25px;
+    width: 100%;
+    text-align: start;
+  
+    padding: 13px;
+    color: #828bb2;
+    font-size: 13px;
+    
+}
+.span-btn{
+    padding-left: 10px;
+}
+.contact-dropdownlist-iteams{
+    position: absolute;
+}
+
+.contact-body-2{
+    margin: 0px;
+    margin-top: -8px;
+  }
+
+  .card-2 {
+    background-color: white;
+    border-radius: 0px 0px 8px 8px;
+    padding: 0px;
+    padding-left: 0px;
+    padding-bottom: 10px;
+    width: 140vh;
+    margin: 10px 0;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 10px 1px rgba(130,139,178,0.55);
+}
+  .contact-dropdownlist-text{
+    width: 98.5%;
+    padding: 5px;
+    margin: 6px;
+    border: 0.5px solid #dcdde4;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    padding-left: 20px;
+  }
+  .contact-dropdownlist-text.focus-input:focus {
+    border: 1px solid #dcdde4;
+    outline: none; 
+    padding-left: 20px;/* Optional: Remove the default outline */
+  }
+  
+
+  .contact-dropdownlist-text::placeholder{
+    color: #828bb2;
+    font-size: 12px;
+  }
+  .contact-dropdownlist-menu{
+    color: #828bb2;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    padding: 10px;
+    font-weight: bold;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    overflow: hidden;
+  }
+ 
+  .active {
+    color: rgb(82, 82, 250);
+  }
+  
+  .contact-dropdownlist-menu {
+    max-height: 290px; 
+   /* Set maximum height */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: bold;
+    padding: 0; /* Remove padding to prevent scroll bar */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+     /* Add border for better visibility */
+  }
+  
+  .contact-dropdownlist-menu::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+  
+  .padded {
+    padding: 15px;
+    width: 400vh; /* Set width to 100% to avoid horizontal scroll */
+    /* Ensure padding is included in width calculation */
+    padding-left: 27px;
+  }
+  
+  .padded:hover {
+    background-color: #dcdde4;
+    cursor: pointer;
+
+  }
+  .contact-name{
+    padding: 0px;
+    padding-left: 15px;
+  }
+  .contact-name-lable{
+    color: #828bb2;
+    
+    font-size: 12px;
+padding: 5px;
+padding-top: 10px;
+  }
+  .contact-name-textboxx{
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid #dcdde4 ;
+    padding: 13px;
+    font-size: 13px;
+    color:#828bb2 ;
+    padding-left: 20px;
+  }
+  .contact-name-textboxx:focus{
+    border: 1px solid #dcdde4;
+    outline: none;
+   
+  }
+  .contact-name-textboxx::placeholder{
+    color: #828bb2;
+   
+    font-size: 13px;
+  }
+  .contact-name-email{
+    width: 48.2%;
+    border-radius: 25px;
+    border: 1px solid #dcdde4 ;
+    padding: 13px;
+    font-size: 13px;
+    color:#828bb2 ;
+    padding-left: 20px;
+  }
+  .contact-name-email:focus{
+    border: 1px solid #dcdde4;
+    outline: none;
+   
+  }
+  .contact-mobile{
+    padding-left: 47%;
+
+  }
+
+
+
+
+
+
+  
+  .contact-span2{
+    color: red;
+  }
+  
+  /* Other existing styles */
+  
