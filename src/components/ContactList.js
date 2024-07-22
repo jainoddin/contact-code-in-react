@@ -1,4 +1,4 @@
-import React, { useState,useCallback } from 'react';
+import React, {useRef, useEffect, useCallback,useState} from "react";
 import './ContactList.css';
 import { FaPlus } from "react-icons/fa6";
 import { AiOutlineFilePdf, AiOutlinePrinter, AiOutlineArrowLeft, AiOutlineArrowRight, } from "react-icons/ai";
@@ -6,13 +6,16 @@ import { FaRegCopy } from "react-icons/fa";
 import { GrDocumentCsv } from "react-icons/gr";
 import { ImFileExcel } from "react-icons/im";
 import jsPDF from 'jspdf';
+import { useNavigate } from "react-router-dom";
 
 
 
 function ContactList() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigateFunc = useNavigate();
   const itemsPerPage = 10;
+  const [list,setList]=useState(true)
   const [data, setData] = useState([
     { SL: 1, NAME: 'Liza', CATEGORY: 'Court reporter', MOBILE: '+62 604 204 5795', EMAIL: 'laloshechkin0@hhs.gov', ACTIONS: 'SELECT' },
     { SL: 2, NAME: 'Randi', CATEGORY: 'Clerks', MOBILE: '+86 325 752 9714', EMAIL: 'rgansbuhlerl@altervista.org', ACTIONS: 'SELECT' },
@@ -82,6 +85,7 @@ function ContactList() {
     let startPage = Math.max(currentPage - halfRange, 1);
     let endPage = Math.min(startPage + maxPageButtons - 1, totalPages);
 
+
     if (endPage - startPage + 1 < maxPageButtons) {
       startPage = Math.max(endPage - maxPageButtons + 1, 1);
     }
@@ -113,6 +117,7 @@ function ContactList() {
 
   const handleEditClick = (item) => {
     console.log(`Edit item ${item.SL}`);
+    navigateFunc("/edit")
   };
 
   const handleDeleteClick = (item) => {
@@ -203,6 +208,18 @@ function ContactList() {
     }
   };
   
+const newpage=()=>{
+  navigateFunc("/new");
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -210,7 +227,7 @@ function ContactList() {
 
   return (
     <>
-      <div style={{ overflow: "hidden" }}>
+    <div style={{ overflow: "hidden" }}>
         <div className="row" style={{ overflow: "hidden" }}>
           <div className="col-sm-2 between-sm-3-and-4"><h1 className='sidebar'>Sidebar</h1></div>
           <div className="col-sm-9 contact">
@@ -218,7 +235,7 @@ function ContactList() {
               <div className='contact-components'>
                 <div className='contact-header'>
                   <p className='contact-list-title'>Contact List</p>
-                  <button className='contact-header-btn'><FaPlus  className='contact-icon' />NEW CONTACT</button>
+                  <button className='contact-header-btn'  onClick={newpage}><FaPlus  className='contact-icon' />NEW CONTACT</button>
                   <div className='contact-header-textbox'>
                     <input type="text" name="search" placeholder="JS.QUICK SEARCH" className='contact-header-textfeild' />
                   </div>

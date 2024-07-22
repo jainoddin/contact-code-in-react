@@ -390,5 +390,702 @@
     }
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .contact-header-2 p {
+    font-family: var(--base_font);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    color: #415094; /* make the text bold */
+    padding: 0px;
+    padding-top: 5px;
+    padding-left: 15px;
+    font-family: "Times New Roman", serif;
+  }
+  .cardd {
+    background-color: white;
+    border-radius: 8px;
+    padding: 0px;
+    padding-left: 0px;
+    padding-bottom: 6px;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .contact-list-title {
+    display: inline-block;
+    margin-right: 10px; /* add some space between the p tag and the button */
+    position: relative;
+    top: 4px;
+  }
+  .form-group{
+      padding: 25px;
+      margin: -15px;
+      margin-left: -20px;
+  }
+  .control-label{
+      font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    color: #828bb2; /* make the text bold */
+    padding: 0px;
+    padding-top: 5px;
+    padding-left: 20px;
+    font-family: "Times New Roman", serif;
+      
+  }
+  .contact-lable2{
+      font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    color: green; /* make the text bold */
+    padding: 0px;
+    padding-top: 5px;
+    padding-left: 15px;
+    font-family: "Times New Roman", serif;
+    position: relative;
+    left: 68%;
+    cursor: pointer;
+      
+  }
+  .contact-dropdownlist{
+      padding-left: 14px;
+  }
+  .contact-lable2-icon{
+      padding-bottom: 5px;
+      width: 13%;
+      height: 13%;
+  }
+  .contact-down-icon{
+      position: relative;
+      left: 80%;
+  }
+  .contact-dropdownlist-btn{
+      border: 1px solid #dcdde4;
+      background-color: transparent;
+      border-radius: 25px;
+      width: 100%;
+      text-align: start;
+    
+      padding: 13px;
+      color: #828bb2;
+      font-size: 13px;
+      
+  }
+  .span-btn{
+      padding-left: 10px;
+  }
+  .contact-dropdownlist-iteams{
+      position: absolute;
+  }
   
+  .contact-body-2{
+      margin: 0px;
+      margin-top: -8px;
+    }
+  
+    .card-2 {
+      background-color: white;
+      border-radius: 0px 0px 8px 8px;
+      padding: 0px;
+      padding-left: 0px;
+      padding-bottom: 10px;
+      width: 143vh;
+      margin: 10px 0;
+      box-sizing: border-box;
+      box-shadow: 0px 3px 10px 1px rgba(130,139,178,0.55);
+  }
+    .contact-dropdownlist-text{
+      width: 98.5%;
+      padding: 5px;
+      margin: 6px;
+      border: 0.5px solid #dcdde4;
+      border-radius: 5px;
+      margin-bottom: 0px;
+      padding-left: 20px;
+    }
+    .contact-dropdownlist-text.focus-input:focus {
+      border: 1px solid #dcdde4;
+      outline: none; 
+      padding-left: 20px;/* Optional: Remove the default outline */
+    }
+    
+  
+    .contact-dropdownlist-text::placeholder{
+      color: #828bb2;
+      font-size: 12px;
+    }
+    .contact-dropdownlist-menu{
+      color: #828bb2;
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      padding: 10px;
+      font-weight: bold;
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      overflow: hidden;
+    }
+   
+    .active {
+      color: rgb(116, 116, 250);
+    }
+    
+    .contact-dropdownlist-menu {
+      max-height: 290px; 
+     /* Set maximum height */
+      overflow-y: auto;  /* Enable vertical scrolling */
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-weight: bold;
+      padding: 0; /* Remove padding to prevent scroll bar */
+      box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+       /* Add border for better visibility */
+    }
+    
+    .contact-dropdownlist-menu::-webkit-scrollbar {
+      display: none; /* Hide the scrollbar */
+    }
+    
+    .padded {
+      padding: 15px;
+      width: 400vh; /* Set width to 100% to avoid horizontal scroll */
+      /* Ensure padding is included in width calculation */
+      padding-left: 27px;
+    }
+    
+    .padded:hover {
+      background-color: #dcdde4;
+      cursor: pointer;
+  
+    }
+    .contact-name{
+      padding: 0px;
+      padding-left: 15px;
+    }
+    .contact-name-lable{
+      color: #828bb2;
+      
+      font-size: 12px;
+  padding: 5px;
+  padding-top: 10px;
+    }
+    .contact-name-textboxx{
+      width: 100%;
+      border-radius: 25px;
+      border: 1px solid #dcdde4 ;
+      padding: 13px;
+      font-size: 13px;
+      color:#828bb2 ;
+      padding-left: 20px;
+    }
+    .contact-name-textboxx:focus{
+      border: 1px solid #dcdde4;
+      outline: none;
+     
+    }
+    .contact-name-textboxx::placeholder{
+      color: #828bb2;
+     
+      font-size: 13px;
+    }
+    .contact-name-email{
+      width: 48.2%;
+      border-radius: 25px;
+      border: 1px solid #dcdde4 ;
+      padding: 13px;
+      font-size: 13px;
+      color:#828bb2 ;
+      padding-left: 20px;
+    }
+    .contact-name-email:focus{
+      border: 1px solid #dcdde4;
+      outline: none;
+     
+    }
+    .contact-name-email::placeholder{
+      color:#828bb2 ;
+    }
+    .contact-mobile{
+      padding-left: 47%;
+  
+    }
+  
+  
+  
+  
+  
+  
+    
+    .contact-span2{
+      color: red;
+    }
+    
+    /***************************************** commentbox css***********************************************8 */
+  .comment-box {
+      
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  background-color: #F5F7FB;
+    width: 100%;
+    
+    padding-bottom: 0px;
+  }
+  
+  
+  
+  
+  .contact-dropdownlist-text{
+    width: 98.5%;
+    padding: 1px;
+    margin: 6px;
+    border: 0.5px solid #dcdde4;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    padding-left: 20px;
+  }
+  .contact-dropdownlist-text.focus-input:focus {
+    border: 1px solid #dcdde4;
+    outline: none; 
+    padding-left: 20px;/* Optional: Remove the default outline */
+  }
+  
+  
+  
+  
+  
+  #myTextarea {
+    width: 100%; /* Increase width to 80% of parent element */
+    height: 200px; /* Increase height to 200px */
+    
+    box-sizing: border-box !important;
+    resize: vertical; /* Allow only vertical resizing */
+    border-left: none;
+    border-right: none;
+    border: none;
+    
+   margin-left: -0PX !important;
+    border-bottom: 1px solid #dcdde4 !important;
+    border-top: 1px solid #dcdde4 !important;
+    border-radius: 0px;
+  }
+  
+  
+  #myTextarea:focus {
+    border-radius: 0px;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #dcdde4 !important;
+    border-top: 1px solid #dcdde4 !important;
+    color:#828bb2 !important;
+   
+  }
+  #myTextarea::placeholder{
+    color: #828bb2 !important;
+      font-size: 15px !important;
+      padding-left: 0px !important;
+  }
+  
+  
+  
+  
+  
+  
+  .custom-resize-handle {
+    position: relative;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px; /* Adjust size as needed */
+    height: 10px; /* Adjust size as needed */
+    cursor: ns-resize; /* Change cursor to vertical resize */
+   
+  }
+  .comment-icon{
+  color: #828bb2;
+  
+  }
+  
+  
+  
+  /*********************************commentbox header***************************************/
+  .commentbox-header-b{
+    border: none;
+    background-color: white;
+    font-size: 18px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 5px 0px 0px 5px;
+    color: #828bb2;
+    font-family: bold;
+    font-size: 18px;
+  }
+  .commentbox-header-b:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+  
+  }
+  .commentbox-header-i {
+    border: none;
+    background-color: white;
+    font-size: 18px; /* Keep only one font-size declaration */
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 1px;
+    border-radius: 0px 0px 0px 0px;
+    color: #828bb2;
+    font-family: italics;
+  }
+  .commentbox-header-i:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+  
+  }
+  .commentbox-header-u{
+    border: none;
+    background-color: white;
+    font-size: 17px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 0px;
+    border-radius: 0px 5px 5px 0px;
+    color: #828bb2;
+   
+  }
+  .commentbox-header-u:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+  
+  }
+  .commentbox-header-c{
+    border: none;
+    background-color: white;
+    font-size: 17px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 80px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 5px 5px 5px 5px;
+    color: #828bb2;
+   .comment-icon{
+    font-size: 11px;
+    padding-left: 5px;
+   }
+  }
+  .commentbox-header-c:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  
+  .commentbox-header-fontsize{
+    border: none;
+    background-color: white;
+    font-size: 12px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 45px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 5px 0px 0px 5px;
+    color: #828bb2;
+   .comment-icon{
+    font-size: 11px;
+    padding-left: 5px;
+   }
+  }
+  .commentbox-header-fontsize:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  .commentbox-header-aa{
+    border: none;
+    background-color: white;
+    font-size: 18px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    padding-bottom: 3px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 5px 0px 0px 5px;
+    color: #828bb2;
+   
+  }
+  .commentbox-header-aa:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  .commentbox-header-color{
+    border: none;
+    background-color: white;
+    font-size: 12px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+   
+    height: 40px; /* Increase height */
+    width: 18px;
+    margin-top: 5px;
+    margin-left: 2px;
+    border-radius: 0px 5px 5px 0px;
+    color: #828bb2;
+   .comment-icon{
+    font-size: 11px;
+    padding-left: 0px;
+   }
+  }
+  .commentbox-header-color:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  
+  .commentbox-header-orderlist{
+    border: none;
+    background-color: white;
+    font-size: 18px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 8px;
+    border-radius: 5px 0px 0px 5px;
+    color: #828bb2;
+    font-family: bold;
+    font-size: 18px;
+  }
+  .commentbox-header-orderlist:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  .commentbox-header-unorderlist{
+    border: none;
+    background-color: white;
+    font-size: 18px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 1px;
+    border-radius: 0px 5px 5px 0px;
+    color: #828bb2;
+    font-family: bold;
+    font-size: 18px;
+  }
+  .commentbox-header-unorderlist:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  
+  .commentbox-header-list{
+    border: none;
+    background-color: white;
+    font-size: 17px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 8px;
+    border-radius: 5px 5px 5px 5px;
+    color: #828bb2;
+   .comment-icon{
+    font-size: 11px;
+    padding-left: 5px;
+   }
+  }
+  .commentbox-header-list:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  .commentbox-header-listt{
+    border: none;
+    background-color: white;
+    font-size: 17px; /* Increase font size */
+    padding: 0px; /* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 0.5px;
+    border-radius: 5px 5px 5px 5px;
+    color: #828bb2;
+   .comment-icon{
+    font-size: 11px;
+    padding-left: 5px;
+   }
+  }
+  .commentbox-header-listt:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  .commentbox-header-table{
+    border: none;
+    background-color: white;
+    font-size: 17px; /* Increase font size */
+    padding: 0px;
+    padding-left: 5px; 
+    padding-right: 5px;/* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 8px;
+    border-radius: 5px 5px 5px 5px;
+    color: #828bb2;
+   .comment-icon{
+    font-size: 11px;
+    padding-left: 5px;
+   }
+  }
+  .commentbox-header-table:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+  .commentbox-header-link{
+    border: none;
+    background-color: white;
+    font-size: 23px; /* Increase font size */
+    padding: 0px;
+    padding-left: 5px; 
+    padding-bottom: 5px;
+    
+    padding-right: 5px;/* Increase padding */
+    height: 40px; /* Increase height */
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 5px 5px 5px 5px;
+    color: #828bb2;
+  }
+  .commentbox-header-link:hover{
+    background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -moz-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -o-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -ms-linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 0%);
+    color: #ffffff; /* assuming you want white text color */
+    .comment-icon{
+      color:#ffffff ;
+     }
+  }
+
+
+
+
   
