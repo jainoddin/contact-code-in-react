@@ -12,12 +12,18 @@ import { MdFormatAlignLeft } from "react-icons/md";
 import { PiTextTBold } from "react-icons/pi";
 import { ImTable2 } from "react-icons/im";
 import { MdOutlineLink } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCheck } from "react-icons/ai";
+
 
 
 
 
 function Editcontact() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigateFunc = useNavigate();
+  const popupRef = useRef(null);
 
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
@@ -59,6 +65,17 @@ function Editcontact() {
       handle.removeEventListener('mousedown', startResize);
     };
   }, [startResize]);
+   
+  const popup=()=>{
+    if (popupRef.current) {
+      popupRef.current.classList.add("open");
+  }
+}
+const popupclose=()=>{
+  if (popupRef.current) {
+    popupRef.current.classList.remove("open");
+  }
+}
 
   return (
     <>
@@ -78,7 +95,7 @@ function Editcontact() {
                     <div className="card-body">
                       <div className="form-group">
                         <label className="col-sm-2 control-label">CATEGORY</label>
-                        <label className="contact-lable2">
+                        <label className="contact-lable2" onClick={popup}>
                           CREATE NEW <FaPlusCircle className="contact-lable2-icon" />
                         </label>
                         <br />
@@ -207,7 +224,9 @@ function Editcontact() {
 
                           </div>
                         </div>
+                       
                       </div>
+                      <button className="comment-submit-btn">C R E A T E</button>
                     </div>
                   </div>
 
@@ -223,6 +242,32 @@ function Editcontact() {
           </div>
         </div>
       </div>
+
+      <div className="recovery-popup" ref={popupRef}>
+              <div className="popup">
+                <div className="popup-header">
+               <p className="popup-ptag">New Contact Category</p>
+               <button className="popup-btn" onClick={popupclose}><AiOutlineClose className="popup-icon"/>               </button>
+
+                </div>
+                <div className="popup-body">
+                <label className="popup-label">NAME<span className="contact-span2"> *</span></label>
+<div className="input-containerr">
+  <input type="text" className="contact-popup-textbox" placeholder="DESIGNATION NAME"></input>   
+</div>
+<label className="popup-label2">DESCRIPTION</label>
+<div className="input-containerr">
+  <textarea className="contact-popup-textbox2" placeholder="DESIGNATION DESCRIPTION"></textarea>   
+</div>
+<button className="comment-popup-btn"><AiOutlineCheck /> C R E A T E</button>
+
+                </div>
+
+               
+               
+                
+              </div>
+            </div>
     </>
   );
 }
