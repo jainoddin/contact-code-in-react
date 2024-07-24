@@ -77,6 +77,26 @@ const popupclose=()=>{
   }
 }
 
+
+
+const [selectedCategory, setSelectedCategory] = useState('Select Contact Category');
+const [searchTerm, setSearchTerm] = useState('');
+
+
+
+const handleCategorySelect = (category) => {
+  setSelectedCategory(category);
+  setShowDropdown(false);
+};
+
+const categories = [
+  'JUDGE', 'LAWYER', 'CLIENT', 'COURT REPORTER', 'CLERKS', 'TEST', 'aaaa', 'bbb', 'ccc', 'ddd'
+];
+
+const filteredCategories = categories.filter(category =>
+  category.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
   return (
     <>
       <div style={{ overflow: "hidden" }}>
@@ -100,64 +120,38 @@ const popupclose=()=>{
                         </label>
                         <br />
                         <div className="contact-dropdownlist">
-                          <button
-                            className="contact-dropdownlist-btn"
-                            onClick={handleDropdownClick}
-                          >
-                           <span className="span-btn"> Select Contact Category</span> {showDropdown ? ( <FaCaretUp className="contact-down-icon" /> ):(<FaCaretDown className="contact-down-icon" />)}
-                          </button>
-                          {showDropdown && (
-                            <div className="contact-dropdownlist-iteams">
-                              <div className="contact-body-2">
-                                <div className="card-2 elevation">
-                                  <input 
-                                    type="text" 
-                                    className="contact-dropdownlist-text focus-input" 
-                                    placeholder="SEARCH..." 
-                                    onChange={handleInputChange} 
-                                  />
-                                  <div className="contact-dropdownlist-menu">
-                                    <table>
-                                      <tr className="a">
-                                        <td className="padded active">Select Contact Category </td>
-                                      </tr>
-                                      <tr className="a">
-                                        <td className="padded">JUDGE</td>
-                                      </tr>
-                                      <tr className="a">
-                                        <td className="padded">LAWYER </td>
-                                      </tr>
-                                      <tr className="a">
-                                        <td className="padded">CLIENT</td>
-                                      </tr>
-                                      <tr>
-                                        <td className="padded">COURT REPORTER</td>
-                                      </tr>
-                                      <tr>
-                                        <td className="padded">CLERKS</td>
-                                      </tr>
-                                      <tr>
-                                        <td className="padded">TEST</td>
-                                      </tr>
-                                      <tr>
-                                        <td className="padded">aaaa</td>
-                                      </tr>
-                                      <tr>
-                                        <td className="padded">bbb</td>
-                                      </tr>
-                                      <tr>
-                                        <td className="padded">ccc</td>
-                                      </tr>
-                                      <tr>
-                                        <td className="padded">ddd</td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-                        </div>
+      <button className="contact-dropdownlist-btn" onClick={handleDropdownClick}>
+        <span className="span-btn">{selectedCategory}</span>
+        {showDropdown ? (
+          <FaCaretUp className="contact-down-icon" />
+        ) : (
+          <FaCaretDown className="contact-down-icon" />
+        )}
+      </button>
+      {showDropdown && (
+        <div className="contact-dropdownlist-iteams">
+          <div className="contact-body-2">
+            <div className="card-2 elevation">
+              <input
+                type="text"
+                className="contact-dropdownlist-text focus-input"
+                placeholder="SEARCH..."
+                onChange={handleInputChange}
+              />
+              <div className="contact-dropdownlist-menu">
+                <table>
+                  {filteredCategories.map((category) => (
+                    <tr key={category} className="a" onClick={() => handleCategorySelect(category)}>
+                      <td className="padded">{category}</td>
+                    </tr>
+                  ))}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
                         <div className="contact-name">
                             <label className="contact-name-lable">NAME<span className="contact-span2"> *</span></label>
                           <div className="contact-name-textbox">

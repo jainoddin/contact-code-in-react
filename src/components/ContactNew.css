@@ -63,8 +63,9 @@
     height: 13%;
 }
 .contact-down-icon{
-    position: relative;
-    left: 80%;
+    position:absolute;
+    left: 91%;
+   top :155px
 }
 .contact-dropdownlist-btn{
     border: 1px solid #dcdde4;
