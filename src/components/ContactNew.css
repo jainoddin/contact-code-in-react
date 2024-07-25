@@ -111,11 +111,14 @@
     margin-bottom: 0px;
     padding-left: 20px;
   }
+  
   .contact-dropdownlist-text.focus-input:focus {
     border: 1px solid #dcdde4;
     outline: none; 
     padding-left: 20px;/* Optional: Remove the default outline */
   }
+
+ 
   
 
   .contact-dropdownlist-text::placeholder{

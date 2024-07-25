@@ -647,12 +647,13 @@
   border-left: none;
   border-right: none;
   border: none;
-
+ 
   margin-left: -0px !important;
   border-bottom: 1px solid #dcdde4 !important;
   border-top: 1px solid #dcdde4 !important;
   border-radius: 0px;
 }
+
 
 #myTextarea:focus {
   border-radius: 0px;
@@ -778,19 +779,25 @@
 .commentbox-header-c {
   border: none;
   background-color: white;
-  font-size: 17px; /* Increase font size */
-  padding: 0px; /* Increase padding */
-  height: 40px; /* Increase height */
-  width: 80px;
+  /* Increase font size */
+  padding: 5px 10px; /* Adjust padding to increase size */
+  height: auto; /* Adjust height to fit content */
+  width: auto; /* Ensure width is auto */
   margin-top: 5px;
   margin-left: 5px;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 5px;
   color: #828bb2;
-  .comment-icon {
-    font-size: 11px;
-    padding-left: 5px;
-  }
+  display: inline-flex; /* Ensure content is aligned and button width fits content */
+  align-items: center; /* Center align items vertically */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden;
 }
+
+.commentbox-header-c .comment-icon {
+  font-size: 16px; /* Adjust icon font size */
+  padding-left: 5px;
+}
+
 .commentbox-header-c:hover {
   background: -webkit-linear-gradient(
     90deg,
@@ -1144,3 +1151,42 @@
     color: #ffffff;
   }
 }
+/*active baclground colors*/
+.commentbox-header-b.active {
+  background-color: #afb3c4;
+  color: #ffffff;
+}
+.commentbox-header-i.active {
+  background-color: #afb3c4;
+  color: #ffffff;
+}
+.commentbox-header-u.active {
+  background-color: #afb3c4;
+  color: #ffffff;
+}
+
+.dropdown-menuu {
+  display: block;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menuu li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+/* Ensure the font size is applied */
+#myTextarea span {
+  font-size: inherit !important;
+}
+
+
