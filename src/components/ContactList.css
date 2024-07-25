@@ -647,13 +647,17 @@
   border-left: none;
   border-right: none;
   border: none;
- 
+  min-height: 100px !important;
   margin-left: -0px !important;
   border-bottom: 1px solid #dcdde4 !important;
   border-top: 1px solid #dcdde4 !important;
   border-radius: 0px;
-}
+  resize: vertical !important;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  overflow: auto;
 
+}
 
 #myTextarea:focus {
   border-radius: 0px;
@@ -1173,12 +1177,37 @@
   z-index: 1;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 5px;
+  cursor: pointer;
+  width: 150px;
 }
 
-.dropdown-menuu li {
-  padding: 8px 12px;
+.dropdown-menuuu {
+  display: block;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 5px;
   cursor: pointer;
+  width: 50px;
+}
+
+.dropdown-menuuu li {
+  padding: 5px;
+  cursor: pointer;
+}
+.dropdown-menuuu li:hover {
+  background-color: #a5add1;
+}
+.font-dropdown-item:hover {
+  background-color: #a5add1;
+  position: relative;
+  padding-left: 15px;
+  left: -15px;
+  width: 125%;
 }
 .dropdown {
   position: relative;
@@ -1188,5 +1217,10 @@
 #myTextarea span {
   font-size: inherit !important;
 }
+
+
+
+
+
 
 

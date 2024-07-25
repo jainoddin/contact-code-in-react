@@ -1,8 +1,21 @@
 import React, { useRef, useEffect, useCallback, useState } from "react";
 import "./ContactNew.css";
-import { FaPlusCircle, FaCaretDown, FaCaretUp, FaGripLines, FaItalic, FaBold, FaUnderline } from "react-icons/fa";
+import {
+  FaPlusCircle,
+  FaCaretDown,
+  FaCaretUp,
+  FaGripLines,
+  FaItalic,
+  FaBold,
+  FaUnderline,
+} from "react-icons/fa";
 import { PiTextAaBold, PiTextTBold } from "react-icons/pi";
-import { MdFormatListNumbered, MdFormatListBulleted, MdFormatAlignLeft, MdOutlineLink } from "react-icons/md";
+import {
+  MdFormatListNumbered,
+  MdFormatListBulleted,
+  MdFormatAlignLeft,
+  MdOutlineLink,
+} from "react-icons/md";
 import { ImTable2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
@@ -65,17 +78,27 @@ function Editcontact() {
     }
   };
 
-  const [selectedCategory, setSelectedCategory] = useState("Select Contact Category");
+  const [selectedCategory, setSelectedCategory] = useState(
+    "Select Contact Category"
+  );
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
     setShowDropdown(false);
   };
-  
 
   const categories = [
-    "JUDGE", "LAWYER", "CLIENT", "COURT REPORTER", "CLERKS", "TEST", "aaaa", "bbb", "ccc", "ddd",
+    "JUDGE",
+    "LAWYER",
+    "CLIENT",
+    "COURT REPORTER",
+    "CLERKS",
+    "TEST",
+    "aaaa",
+    "bbb",
+    "ccc",
+    "ddd",
   ];
 
   const filteredCategories = categories.filter((category) =>
@@ -86,22 +109,26 @@ function Editcontact() {
   const [isBoldActive, setIsBoldActive] = useState(false);
   const [isBoldActive2, setIsBoldActive2] = useState(false);
   const [isActive3, setIsActive3] = useState(false);
-  const [isFontFamilyDropdownOpen, setIsFontFamilyDropdownOpen] = useState(false);
-  const [selectedFontFamily, setSelectedFontFamily] = useState('Arial');
+  const [isFontFamilyDropdownOpen, setIsFontFamilyDropdownOpen] =
+    useState(false);
+  const [selectedFontFamily, setSelectedFontFamily] = useState("Arial");
   const [isFontSizeDropdownOpen, setIsFontSizeDropdownOpen] = useState(false);
 
-
-  const fontFamilies = ['Arial', 'Verdana', 'Times New Roman', 'Courier New', 'Georgia'];
-
-
+  const fontFamilies = [
+    "Arial",
+    "Verdana",
+    "Times New Roman",
+    "Courier New",
+    "Georgia",
+  ];
 
   const handleBoldClick = () => {
-    document.execCommand('bold', false, null);
+    document.execCommand("bold", false, null);
     setIsBoldActive(!isBoldActive);
   };
 
   const handleitalicClick = () => {
-    document.execCommand('italic', false, null);
+    document.execCommand("italic", false, null);
     setIsBoldActive2(!isBoldActive2);
   };
 
@@ -110,28 +137,18 @@ function Editcontact() {
   };
 
   const handleUnderlineClick = () => {
-    document.execCommand('underline', false, null);
+    document.execCommand("underline", false, null);
     setIsActive3(!isActive3);
   };
 
-
-
-
-
-
-
-
-
-  
-  const fontSizes = ['12px', '14px', '16px', '18px', '20px', '24px', '28px'];
-  const [selectedFontSize, setSelectedFontSize] = useState('12px');
+  const [selectedFontSize, setSelectedFontSize] = useState("16px");
   const [savedRange, setSavedRange] = useState(null);
-
+  const fontSizes = ["12px", "14px", "16px", "18px", "20px", "24px", "28px"];
+  const [value, setValue] = useState("7");
   const saveSelection = () => {
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       setSavedRange(selection.getRangeAt(0));
-      console.log("Selection saved:", selection.getRangeAt(0));
     }
   };
 
@@ -140,37 +157,86 @@ function Editcontact() {
     if (savedRange) {
       selection.removeAllRanges();
       selection.addRange(savedRange);
-      console.log("Selection restored:", savedRange);
     }
   };
 
+  useEffect(() => {
+    if (selectedFontSize === "12px") {
+      setValue("3");
+    } else if (selectedFontSize === "14px") {
+      setValue("4");
+    } else if (selectedFontSize === "16px") {
+      setValue("5");
+    } else if (selectedFontSize === "18px") {
+      setValue("6");
+    } else if (selectedFontSize === "20px") {
+      setValue("7");
+    } else if (selectedFontSize === "24px") {
+      setValue("8");
+    } else if (selectedFontSize === "28px") {
+      setValue("9");
+    }
+  }, [selectedFontSize]);
+
   const handleFontSizeChange = (size) => {
+    console.log("Changing font size to:", size);
     restoreSelection();
-    document.execCommand('fontSize', false, '7'); // Set font size to the largest predefined size
-    if (contentEditableRef.current) {
-      const fontElements = contentEditableRef.current.getElementsByTagName('font');
-      for (let i = 0; i < fontElements.length; i++) {
-        if (fontElements[i].size === '7') {
-          fontElements[i].removeAttribute('size');
-          fontElements[i].style.fontSize = size;
+    const selection = window.getSelection();
+    console.log("Selection range count:", selection.rangeCount); // Debug log
+    if (selection.rangeCount > 0) {
+      document.execCommand("fontSize", false, value);
+      console.log("Value used for execCommand:", value); // Debug log
+      if (contentEditableRef.current) {
+        const fontElements =
+          contentEditableRef.current.getElementsByTagName("font");
+        console.log("Font elements found:", fontElements.length); // Debug log
+        for (let i = 0; i < fontElements.length; i++) {
+          console.log("Font element size:", fontElements[i].size); // Debug log
+          if (fontElements[i].size === "7") {
+            fontElements[i].removeAttribute("size");
+            fontElements[i].style.fontSize = size;
+          }
         }
       }
       setSelectedFontSize(size);
+      console.log("Font size changed to:", size); // Debug log
+    } else {
+      // Alternative approach: manually apply font size
+      const range = savedRange.cloneRange();
+      const span = document.createElement("span");
+      span.style.fontSize = size;
+      range.surroundContents(span);
+      setSelectedFontSize(size);
+      console.log("Manually applied font size:", size); // Debug log
     }
     setIsFontSizeDropdownOpen(false);
   };
-  console.log("size",selectedFontSize)
 
   const handleFontFamilyChange = (fontFamily) => {
     restoreSelection();
-    document.execCommand('fontName', false, fontFamily);
+    document.execCommand("fontName", false, fontFamily);
     setSelectedFontFamily(fontFamily);
     setIsFontFamilyDropdownOpen(false);
   };
 
- 
-  
 
+
+
+  const [highlightColor, setHighlightColor] = useState('white'); // Default highlight color
+
+const handleColorChange = (event) => {
+  setHighlightColor(event.target.value);
+};
+
+const applyHighlightColor = () => {
+  const selection = window.getSelection();
+  if (selection.rangeCount > 0) {
+    const range = selection.getRangeAt(0);
+    const span = document.createElement('span');
+    span.style.backgroundColor = highlightColor;
+    range.surroundContents(span);
+  }
+};
 
   return (
     <>
@@ -189,9 +255,12 @@ function Editcontact() {
                   <div className="cardd elevation">
                     <div className="card-body">
                       <div className="form-group">
-                        <label className="col-sm-2 control-label">CATEGORY</label>
+                        <label className="col-sm-2 control-label">
+                          CATEGORY
+                        </label>
                         <label className="contact-lable2" onClick={popup}>
-                          CREATE NEW <FaPlusCircle className="contact-lable2-icon" />
+                          CREATE NEW{" "}
+                          <FaPlusCircle className="contact-lable2-icon" />
                         </label>
                         <br />
                         <div className="contact-dropdownlist">
@@ -222,7 +291,9 @@ function Editcontact() {
                                         <tr
                                           key={category}
                                           className="a"
-                                          onClick={() => handleCategorySelect(category)}
+                                          onClick={() =>
+                                            handleCategorySelect(category)
+                                          }
                                         >
                                           <td className="padded">{category}</td>
                                         </tr>
@@ -255,7 +326,9 @@ function Editcontact() {
                               className="contact-name-email"
                               placeholder="E-MAIL"
                             ></input>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
                             <input
                               type="number"
                               className="contact-name-email"
@@ -263,43 +336,63 @@ function Editcontact() {
                             ></input>
                           </div>
                           <div className="contact-commentbox">
-                            <label className="contact-name-lable">THE DESCRIPTION</label>
+                            <label className="contact-name-lable">
+                              THE DESCRIPTION
+                            </label>
                             <div className="comment-box">
                               <div className="commentbox-header">
                                 <button
-                                  className={`commentbox-header-b ${isBoldActive ? 'active' : ''}`}
+                                  className={`commentbox-header-b ${
+                                    isBoldActive ? "active" : ""
+                                  }`}
                                   onMouseDown={saveSelection}
                                   onClick={handleBoldClick}
                                 >
                                   <FaBold />
                                 </button>
                                 <button
-                                  className={`commentbox-header-i ${isBoldActive2 ? 'active' : ''}`}
+                                  className={`commentbox-header-i ${
+                                    isBoldActive2 ? "active" : ""
+                                  }`}
                                   onMouseDown={saveSelection}
                                   onClick={handleitalicClick}
                                 >
                                   <FaItalic />
                                 </button>
-                                <button className={`commentbox-header-u ${isActive3 ? 'active' : ''}`} onClick={handleUnderlineClick}>
+                                <button
+                                  className={`commentbox-header-u ${
+                                    isActive3 ? "active" : ""
+                                  }`}
+                                  onClick={handleUnderlineClick}
+                                >
                                   <FaUnderline />
                                 </button>
-
 
                                 <div className="dropdown">
                                   <button
                                     className="commentbox-header-c"
                                     onMouseDown={saveSelection}
-                                    onClick={() => setIsFontFamilyDropdownOpen(!isFontFamilyDropdownOpen)}
+                                    onClick={() =>
+                                      setIsFontFamilyDropdownOpen(
+                                        !isFontFamilyDropdownOpen
+                                      )
+                                    }
                                   >
-                                    {selectedFontFamily} <FaCaretDown className="comment-icon" />
+                                    {selectedFontFamily}{" "}
+                                    <FaCaretDown className="comment-icon" />
                                   </button>
                                   {isFontFamilyDropdownOpen && (
-                                    <div className="dropdown-menuu" style={{padding:"15px"}}>
+                                    <div
+                                      className="dropdown-menuu"
+                                      style={{ padding: "15px" }}
+                                    >
                                       {fontFamilies.map((fontFamily) => (
                                         <div
                                           key={fontFamily}
                                           className="font-dropdown-item"
-                                          onClick={() => handleFontFamilyChange(fontFamily)}
+                                          onClick={() =>
+                                            handleFontFamilyChange(fontFamily)
+                                          }
                                         >
                                           {fontFamily}
                                         </div>
@@ -308,30 +401,70 @@ function Editcontact() {
                                   )}
                                 </div>
 
-
-
-
-
                                 <div className="dropdown">
-        <button className="commentbox-header-fontsize" onClick={() => setIsFontSizeDropdownOpen(!isFontSizeDropdownOpen)}>
-          {selectedFontSize} <FaCaretDown className="comment-icon" />
-        </button>
-        {isFontSizeDropdownOpen && (
-          <ul className="dropdown-menuu">
-            {fontSizes.map((size) => (
-              <li key={size} onMouseDown={saveSelection} onClick={() => handleFontSizeChange(size)}>
-                {size}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-                                <button className="commentbox-header-aa">
-                                  <PiTextAaBold />
-                                </button>
-                                <button className="commentbox-header-color">
-                                  <FaCaretDown className="comment-icon" />
-                                </button>
+                                  <button
+                                    className="commentbox-header-fontsize"
+                                    onClick={() =>
+                                      setIsFontSizeDropdownOpen(
+                                        !isFontSizeDropdownOpen
+                                      )
+                                    }
+                                  >
+                                    {selectedFontSize}{" "}
+                                    <FaCaretDown className="comment-icon" />
+                                  </button>
+                                  {isFontSizeDropdownOpen && (
+                                    <ul className="dropdown-menuuu">
+                                      {fontSizes.map((size) => (
+                                        <li
+                                          key={size}
+                                          onMouseDown={saveSelection}
+                                          onClick={() =>
+                                            handleFontSizeChange(size)
+                                          }
+                                        >
+                                          {size}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </div>
+
+
+
+
+
+
+
+                                <button
+  className="commentbox-header-aa"
+  onClick={() => applyHighlightColor()}
+  style={{ backgroundColor: highlightColor }}
+>
+  <PiTextAaBold />
+</button>
+<button
+  className="commentbox-header-color"
+  onClick={() => document.getElementById('colorInput').click()}
+>
+  <FaCaretDown className="comment-icon" />
+  <input
+    id="colorInput"
+    type="color"
+    onChange={handleColorChange}
+    style={{
+      position: 'absolute',
+      left:"30%",
+      opacity: 0,
+      cursor: 'pointer',
+    }}
+  />
+</button>
+
+
+
+
+
                                 <button className="commentbox-header-orderlist">
                                   <MdFormatListNumbered />
                                 </button>
@@ -354,18 +487,18 @@ function Editcontact() {
                                   <MdOutlineLink />
                                 </button>
                               </div>
-                             
+
                               <div
                                 id="myTextarea"
                                 ref={textareaRef}
-                               
                                 rows="4"
                                 cols="80"
                                 contentEditable={true}
                                 placeholder="Your text here..."
-                                className="contact-dropdownlist-text focus-input" onInput={saveSelection}   
+                                className="contact-dropdownlist-text focus-input"
+                                onInput={saveSelection}
                               ></div>
-                              
+
                               <div
                                 className="custom-resize-handle"
                                 ref={handleRef}
