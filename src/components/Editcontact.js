@@ -1,4 +1,10 @@
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useCallback,
+  useState,
+  useContext,
+} from "react";
 import "./ContactNew.css";
 import {
   FaPlusCircle,
@@ -25,22 +31,19 @@ import {
   CiTextAlignCenter,
   CiTextAlignRight,
 } from "react-icons/ci";
-import { useLocation } from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
+import { ContactContext } from "./ContactContext";
 
 function Editcontact() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const { setContacts } = useContext(ContactContext);
 
   const navigateFunc = useNavigate();
   const popupRef = useRef(null);
 
-
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
-
-  
- 
 
   //*********************************************commentboxcode************************************************
   const textareaRef = useRef(null);
@@ -48,13 +51,12 @@ function Editcontact() {
   const isResizing = useRef(false);
   const [isTyping, setIsTyping] = useState(false);
 
-
-  
   const location = useLocation(); // This hook is from react-router-dom
   const { contact } = location.state || {}; // Retrieve contact data from state
-  const [name, setName] = useState(contact?.NAME || '');
-  const [email, setEmail] = useState(contact?.EMAIL || '');
-  const [mobile, setMobile] = useState(contact?.MOBILE || '');
+  const [name, setName] = useState(contact?.NAME || "");
+  const [email, setEmail] = useState(contact?.EMAIL || "");
+  const [mobile, setMobile] = useState(contact?.MOBILE || "");
+  const [sl, setsl] = useState(contact.SL);
 
   const startResize = useCallback((e) => {
     isResizing.current = true;
@@ -95,9 +97,8 @@ function Editcontact() {
   };
 
   const [selectedCategory, setSelectedCategory] = useState(
-    contact?.CATEGORY || 'Select Contact Category'
+    contact?.CATEGORY || "Select Contact Category"
   );
-
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -409,18 +410,13 @@ function Editcontact() {
     } else if (!mobileInput.checkValidity()) {
       mobileInput.reportValidity();
     } else {
-      const formData = { name, email, mobile, selectedCategory };
+      const formData = { name, email, mobile, selectedCategory, sl };
       // Print the array to the console
       console.log(formData);
-      navigateFunc("/")
+      setContacts(formData);
+      navigateFunc("/");
     }
   };
-
-
-  
-
-
-
 
   return (
     <>
@@ -496,7 +492,7 @@ function Editcontact() {
                           </label>
                           <div className="contact-name-textbox">
                             <input
-                            value={name}
+                              value={name}
                               type="text"
                               className="contact-name-textboxx"
                               placeholder="NAME"
@@ -861,14 +857,18 @@ function Editcontact() {
                                 className="custom-resize-handle"
                                 ref={handleRef}
                               >
-                                <FaGripLines className="comment-icon" style={{marginTop:"7px"}} />
+                                <FaGripLines
+                                  className="comment-icon"
+                                  style={{ marginTop: "7px" }}
+                                />
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <button
-                        className="comment-submit-btn" style={{marginTop:"20px"}}
+                        className="comment-submit-btn"
+                        style={{ marginTop: "20px" }}
                         onClick={handleSubmit}
                       >
                         <AiOutlineCheck /> C R E A T E

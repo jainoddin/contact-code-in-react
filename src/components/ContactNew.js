@@ -46,8 +46,7 @@ const ContactNew = ({ onAddContact }) => {
   };
 
   const handleInputChange = (event) => {
-    const userInput = event.target.value;
-    console.log(`User input: ${userInput}`);
+    setSearchTerm(event.target.value);
   };
 
   //*********************************************commentboxcode************************************************
@@ -410,7 +409,7 @@ const ContactNew = ({ onAddContact }) => {
         name: input.value,
         email: emailInput.value,
         mobile: mobileInput.value,
-        selectedCategory: selectedCategory, 
+        selectedCategory: selectedCategory,
       };
 
       setContacts(formData);
@@ -470,6 +469,7 @@ const ContactNew = ({ onAddContact }) => {
                                     className="contact-dropdownlist-text focus-input"
                                     placeholder="SEARCH..."
                                     onChange={handleInputChange}
+                                    value={searchTerm}
                                   />
                                   <div className="contact-dropdownlist-menu">
                                     <table>
@@ -859,7 +859,10 @@ const ContactNew = ({ onAddContact }) => {
                                 className="custom-resize-handle"
                                 ref={handleRef}
                               >
-                                <FaGripLines className="comment-icon" style={{marginTop:"7px"}}/>
+                                <FaGripLines
+                                  className="comment-icon"
+                                  style={{ marginTop: "7px" }}
+                                />
                               </div>
                             </div>
                           </div>
@@ -867,7 +870,8 @@ const ContactNew = ({ onAddContact }) => {
                       </div>
                       <button
                         className="comment-submit-btn"
-                        onClick={handleSubmit} style={{marginTop:"20px"}}
+                        onClick={handleSubmit}
+                        style={{ marginTop: "20px" }}
                       >
                         <AiOutlineCheck /> C R E A T E
                       </button>
