@@ -1,4 +1,10 @@
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useCallback,
+  useState,
+  useContext,
+} from "react";
 import "./ContactList.css";
 import { FaPlus } from "react-icons/fa6";
 import {
@@ -11,14 +17,22 @@ import { FaRegCopy } from "react-icons/fa";
 import { GrDocumentCsv } from "react-icons/gr";
 import { ImFileExcel } from "react-icons/im";
 import jsPDF from "jspdf";
+import 'jspdf-autotable';
+
 import { useNavigate } from "react-router-dom";
+import { ContactContext } from "./ContactContext";
 
 function ContactList() {
+  const { contacts } = useContext(ContactContext);
+
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const navigateFunc = useNavigate();
   const itemsPerPage = 10;
   const [list, setList] = useState(true);
+  const [printOnlyContent, setPrintOnlyContent] = useState([]);
+
+
   const [data, setData] = useState([
     {
       SL: 1,
@@ -44,343 +58,27 @@ function ContactList() {
       EMAIL: "stebbe2@plala.or.jp",
       ACTIONS: "SELECT",
     },
-    {
-      SL: 4,
-      NAME: "Tabitha",
-      CATEGORY: "Lawyer",
-      MOBILE: "+33 221 852 8164",
-      EMAIL: "tvarty3@github.io",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 5,
-      NAME: "Person5",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 6,
-      NAME: "Person6",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 7,
-      NAME: "Person7",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 8,
-      NAME: "Person8",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 9,
-      NAME: "Person9",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 10,
-      NAME: "Person10",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 11,
-      NAME: "Person11",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 12,
-      NAME: "Person12",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 13,
-      NAME: "Person13",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 14,
-      NAME: "Person14",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 15,
-      NAME: "Person15",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 16,
-      NAME: "Person16",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 17,
-      NAME: "Person17",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 18,
-      NAME: "Person18",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 19,
-      NAME: "Person19",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 20,
-      NAME: "Person20",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 21,
-      NAME: "Person21",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 22,
-      NAME: "Person22",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 23,
-      NAME: "Person23",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 24,
-      NAME: "Person24",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 25,
-      NAME: "Person25",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 26,
-      NAME: "Person26",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 27,
-      NAME: "Person27",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 28,
-      NAME: "Person28",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 29,
-      NAME: "Person29",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 30,
-      NAME: "Person30",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 31,
-      NAME: "Person31",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 32,
-      NAME: "Person32",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 33,
-      NAME: "Person33",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 34,
-      NAME: "Person34",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 35,
-      NAME: "Person35",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 36,
-      NAME: "Person36",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 37,
-      NAME: "Person37",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 38,
-      NAME: "Person38",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 39,
-      NAME: "Person39",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 40,
-      NAME: "Person40",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 41,
-      NAME: "Person41",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 42,
-      NAME: "Person42",
-      CATEGORY: "Category5",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email5@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 43,
-      NAME: "Person43",
-      CATEGORY: "Category6",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email6@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 44,
-      NAME: "Person44",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
-    {
-      SL: 45,
-      NAME: "Person45",
-      CATEGORY: "Category7",
-      MOBILE: "+123 456 7890",
-      EMAIL: "email7@example.com",
-      ACTIONS: "SELECT",
-    },
   ]);
+
+  const hasRunRef = useRef(false);
+
+  useEffect(() => {
+    if (contacts && Object.keys(contacts).length > 0 && !hasRunRef.current) {
+      const newdata = {
+        SL: filteredData.length + 1,
+        NAME: contacts.name,
+        CATEGORY: contacts.selectedCategory,
+        MOBILE: contacts.mobile,
+        EMAIL: contacts.email,
+        ACTIONS: "SELECT",
+      };
+      setFilteredData((prevData) => [...prevData, newdata]);
+      hasRunRef.current = true;
+    }
+  }, [contacts, data.length]);
+
+
+
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -396,18 +94,31 @@ function ContactList() {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
+ 
+
+
+
   const getPageNumbers = () => {
     const maxPageButtons = 4;
     const halfRange = Math.floor(maxPageButtons / 2);
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage); // Use filteredData instead of data
     let startPage = Math.max(currentPage - halfRange, 1);
     let endPage = Math.min(startPage + maxPageButtons - 1, totalPages);
-
+  
     if (endPage - startPage + 1 < maxPageButtons) {
       startPage = Math.max(endPage - maxPageButtons + 1, 1);
     }
-
+  
     return [...Array(endPage - startPage + 1).keys()].map((i) => i + startPage);
   };
+
+
+
+
+
+
+
+
 
   const handleSelectBtnClick = (e, item) => {
     if (selectedItem) {
@@ -435,14 +146,18 @@ function ContactList() {
     }
   };
 
+
+
   const handleEditClick = (item) => {
-    console.log(`Edit item ${item.SL}`);
-    navigateFunc("/edit");
+    console.log(`Edit item ${item.SL}`, item); // Log the item data
+    navigateFunc("/edit", { state: { contact: item } }); // Pass the item data to the edit page
   };
 
+
+
   const handleDeleteClick = (item) => {
-    const newData = data.filter((dataItem) => dataItem.SL !== item.SL);
-    setData(newData);
+    const newData = filteredData.filter((dataItem) => dataItem.SL !== item.SL);
+    setFilteredData(newData);
     setSelectedItem(() => null); // Use a callback function to update the state
 
     // Update the display style of the select-dropdown div
@@ -454,7 +169,7 @@ function ContactList() {
 
   const generateCSV = () => {
     const csvHeader = "NAME,CATEGORY,MOBILE,EMAIL\n";
-    const csvRows = data
+    const csvRows = filteredData
       .map(
         (item) => `${item.NAME},${item.CATEGORY},${item.MOBILE},${item.EMAIL}`
       )
@@ -475,35 +190,67 @@ function ContactList() {
     document.body.removeChild(a);
   };
 
+
+
+
+
+
+
+
+
+
+
   const generatePDF = () => {
     const doc = new jsPDF();
     doc.text("Contact List", 15, 15);
 
-    let startY = 30;
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const margin = 15;
-    const maxLineWidth = pageWidth - margin * 2;
+    // Define columns and data
+    const columns = [
+        { header: 'No', dataKey: 'no' },
+        { header: 'Name', dataKey: 'name' },
+        { header: 'Category', dataKey: 'category' },
+        { header: 'Mobile', dataKey: 'mobile' },
+        { header: 'Email', dataKey: 'email' }
+    ];
 
-    data.forEach((item, index) => {
-      const { NAME, CATEGORY, MOBILE, EMAIL } = item;
-      const text = `${
-        index + 1
-      }. NAME: ${NAME}, CATEGORY: ${CATEGORY}, MOBILE: ${MOBILE}, EMAIL: ${EMAIL}`;
+    const data = filteredData.map((item, index) => ({
+        no: index + 1,
+        name: item.NAME,
+        category: item.CATEGORY,
+        mobile: item.MOBILE,
+        email: item.EMAIL
+    }));
 
-      // Split text into multiple lines if it exceeds the max line width
-      const splitText = doc.splitTextToSize(text, maxLineWidth);
-      splitText.forEach((line) => {
-        doc.text(line, 15, startY);
-        startY += 10;
-      });
+    // Use autoTable to create a table with borders
+    doc.autoTable({
+        columns: columns,
+        body: data,
+        startY: 30, // Start position for the table
+        margin: { top: 20, left: 15, right: 15 }, // Adjust margins as needed
+        theme: 'grid', // Use 'grid' theme to get borders
+        headStyles: { fillColor: [22, 160, 133] }, // Optional: Customize header styles
+        styles: { overflow: 'linebreak' }, // Optional: Handle text overflow
     });
 
     doc.save("contacts.pdf");
-  };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   const handleIconClick = (iconName) => {
     if (iconName === "GoFile") {
-      const tableData = data
+      const tableData = filteredData
         .map(
           (item) =>
             `${item.NAME}, ${item.CATEGORY}, ${item.MOBILE}, ${item.EMAIL}`
@@ -533,12 +280,70 @@ function ContactList() {
       downloadCSV();
       alert("EXCEL file dowloaded");
     } else if (iconName === "AiOutlinePrinter") {
-      window.print();
-    }
+      const printContent = filteredData.map((item) => `
+      <tr>
+        <td>${item.NAME}</td>
+        <td>${item.CATEGORY}</td>
+        <td>${item.MOBILE}</td>
+        <td>${item.EMAIL}</td>
+      </tr>
+    `).join("");
+
+    const printWindow = window.open("", "", "width=800,height=600");
+    printWindow.document.open();
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Print</title>
+          <style>
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid black; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+          </style>
+        </head>
+        <body>
+          <h1>Contact List</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>CATEGORY</th>
+                <th>MOBILE</th>
+                <th>EMAIL</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${printContent}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus(); // Focus on the new window
+    setTimeout(() => {
+      printWindow.print(); // Trigger print dialog
+    }, 1000); // Adjust timeout as needed
+  }
   };
 
   const newpage = () => {
     navigateFunc("/new");
+  };
+ 
+
+
+
+
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredData, setFilteredData] = useState(data);
+
+  const handleSearchChange = (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    setSearchValue(searchValue);
+    const filteredData = data.filter((item) => item.CATEGORY.toLowerCase().includes(searchValue));
+    setFilteredData(filteredData);
+    setCurrentPage(1); // Add this line
   };
 
   return (
@@ -563,6 +368,9 @@ function ContactList() {
                       name="search"
                       placeholder="JS.QUICK SEARCH"
                       className="contact-header-textfeild"
+                      value={searchValue}
+                      onChange={handleSearchChange}
+              
                     />
                   </div>
                   <div className="contact-header-icons">
@@ -638,7 +446,7 @@ function ContactList() {
                         </tr>
                       </thead>
                       <tbody>
-                        {data
+                        {filteredData
                           .slice(
                             (currentPage - 1) * itemsPerPage,
                             currentPage * itemsPerPage
@@ -704,7 +512,7 @@ function ContactList() {
                         </tr>
                       </thead>
                       <tbody>
-                        {data.map((item, index) => (
+                        {filteredData.map((item, index) => (
                           <tr key={index} className="contact-body-tr">
                             <td style={{ paddingLeft: "50px" }}>{item.NAME}</td>
                             <td>{item.CATEGORY}</td>

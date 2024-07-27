@@ -19,26 +19,42 @@ import {
 import { ImTable2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
+import { FaTextHeight } from "react-icons/fa6";
+import {
+  CiTextAlignLeft,
+  CiTextAlignCenter,
+  CiTextAlignRight,
+} from "react-icons/ci";
+import { useLocation } from 'react-router-dom';
+
 
 function Editcontact() {
   const [showDropdown, setShowDropdown] = useState(false);
+
   const navigateFunc = useNavigate();
   const popupRef = useRef(null);
+
 
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const handleInputChange = (event) => {
-    const userInput = event.target.value;
-    console.log(`User input: ${userInput}`);
-  };
+  
+ 
 
   //*********************************************commentboxcode************************************************
   const textareaRef = useRef(null);
   const handleRef = useRef(null);
   const isResizing = useRef(false);
   const [isTyping, setIsTyping] = useState(false);
+
+
+  
+  const location = useLocation(); // This hook is from react-router-dom
+  const { contact } = location.state || {}; // Retrieve contact data from state
+  const [name, setName] = useState(contact?.NAME || '');
+  const [email, setEmail] = useState(contact?.EMAIL || '');
+  const [mobile, setMobile] = useState(contact?.MOBILE || '');
 
   const startResize = useCallback((e) => {
     isResizing.current = true;
@@ -79,13 +95,19 @@ function Editcontact() {
   };
 
   const [selectedCategory, setSelectedCategory] = useState(
-    "Select Contact Category"
+    contact?.CATEGORY || 'Select Contact Category'
   );
+
+
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
     setShowDropdown(false);
+  };
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   const categories = [
@@ -143,7 +165,7 @@ function Editcontact() {
 
   const [selectedFontSize, setSelectedFontSize] = useState("16px");
   const [savedRange, setSavedRange] = useState(null);
-  const fontSizes = ["12px", "14px", "16px", "18px", "20px", "24px", "28px"];
+  const fontSizes = ["12px", "14px", "16px", "18px", "20px"];
   const [value, setValue] = useState("7");
   const saveSelection = () => {
     const selection = window.getSelection();
@@ -217,26 +239,188 @@ function Editcontact() {
     document.execCommand("fontName", false, fontFamily);
     setSelectedFontFamily(fontFamily);
     setIsFontFamilyDropdownOpen(false);
+    const button = document.querySelector(".commentbox-header-c");
+
+    // Create a temporary span element to measure the width of the text
+    const tempSpan = document.createElement("span");
+    tempSpan.textContent = fontFamily;
+    tempSpan.style.fontFamily = fontFamily;
+    document.body.appendChild(tempSpan);
+
+    // Get the width of the text
+    const textWidth = tempSpan.offsetWidth;
+
+    // Remove the temporary span element
+    document.body.removeChild(tempSpan);
+
+    // Set the width of the button
+    button.style.width = `${textWidth + 20}px`;
+  };
+
+  const [highlightColor, setHighlightColor] = useState("white"); // Default highlight color
+
+  const handleColorChange = (event) => {
+    setHighlightColor(event.target.value);
+  };
+
+  const applyHighlightColor = () => {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+
+      // Ensure the range starts and ends within a text node
+      if (
+        range.startContainer.nodeType === Node.TEXT_NODE &&
+        range.endContainer.nodeType === Node.TEXT_NODE
+      ) {
+        const span = document.createElement("span");
+        span.style.backgroundColor = highlightColor;
+
+        // Surround the contents of the range with the span
+        range.surroundContents(span);
+      } else {
+        alert("Please make sure your selection is within the same text node.");
+      }
+    }
+  };
+
+  const handleOrderListClick = () => {
+    restoreSelection();
+    document.execCommand("insertOrderedList", false, null);
+  };
+
+  const handleUnorderListClick = () => {
+    restoreSelection();
+    document.execCommand("insertUnorderedList", false, null);
+  };
+  const [paddingTop, setPaddingTop] = useState(5); // initial padding-top
+
+  const handlePaddingAdjustClick = () => {
+    const newPaddingTop = prompt(
+      "Enter new padding-top (in pixels):",
+      paddingTop
+    );
+    if (newPaddingTop !== null && !isNaN(newPaddingTop) && newPaddingTop >= 0) {
+      setPaddingTop(parseInt(newPaddingTop, 10));
+    }
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const [rows, setRows] = useState(2);
+  const [cols, setCols] = useState(2);
+
+  const handleInsertTableClick = () => {
+    setShowModal(true);
+  };
+
+  const insertTable = (rows, cols) => {
+    restoreSelection();
+    let tableHTML =
+      '<table border="1" style="width: 100%; border-collapse: collapse;">';
+    tableHTML += "<tr>";
+    for (let i = 0; i < cols; i++) {
+      tableHTML += `<th>Header ${i + 1}</th>`;
+    }
+    tableHTML += "</tr>";
+    for (let i = 0; i < rows; i++) {
+      tableHTML += "<tr>";
+      for (let j = 0; j < cols; j++) {
+        tableHTML += `<td>Data ${i + 1}-${j + 1}</td>`;
+      }
+      tableHTML += "</tr>";
+    }
+    tableHTML += "</table>";
+    document.execCommand("insertHTML", false, tableHTML);
+    setShowModal(false);
+  };
+  const [showtextDropdown, setShowtextDropdown] = useState(false);
+
+  const handledropdownText = () => {
+    setShowtextDropdown(!showtextDropdown);
+  };
+
+  const handleAlignLeft = () => {
+    document.execCommand("justifyLeft", false, null);
+    setShowtextDropdown(false);
+  };
+
+  const handleAlignCenter = () => {
+    document.execCommand("justifyCenter", false, null);
+    setShowtextDropdown(false);
+  };
+
+  const handleAlignRight = () => {
+    document.execCommand("justifyRight", false, null);
+    setShowtextDropdown(false);
+  };
+
+  const [showLinkModal, setShowLinkModal] = useState(false);
+  const [linkURL, setLinkURL] = useState("");
+
+  const handleLinkButtonClick = () => {
+    saveSelection();
+    setShowLinkModal(true);
+  };
+
+  const handleInsertLink = () => {
+    restoreSelection();
+    if (savedRange && linkURL) {
+      const anchor = document.createElement("a");
+      anchor.href = linkURL;
+      anchor.target = "_blank";
+      anchor.textContent = linkURL;
+
+      savedRange.deleteContents();
+      savedRange.insertNode(anchor);
+
+      setShowLinkModal(false);
+      setLinkURL("");
+    }
+  };
+  useEffect(() => {
+    const handleLinkClick = (event) => {
+      if (event.target.tagName === "A") {
+        window.open(event.target.href, "_blank");
+        event.preventDefault();
+      }
+    };
+
+    const textarea = textareaRef.current;
+    textarea.addEventListener("click", handleLinkClick);
+
+    return () => {
+      textarea.removeEventListener("click", handleLinkClick);
+    };
+  }, []);
+
+  const inputRef = useRef(null);
+  const mobileInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+
+  const handleSubmit = () => {
+    const input = inputRef.current;
+    const emailInput = emailInputRef.current;
+
+    const mobileInput = mobileInputRef.current;
+    if (!input.checkValidity()) {
+      input.reportValidity();
+    } else if (!emailInput.checkValidity()) {
+      emailInput.reportValidity();
+    } else if (!mobileInput.checkValidity()) {
+      mobileInput.reportValidity();
+    } else {
+      const formData = { name, email, mobile, selectedCategory };
+      // Print the array to the console
+      console.log(formData);
+      navigateFunc("/")
+    }
   };
 
 
+  
 
 
-  const [highlightColor, setHighlightColor] = useState('white'); // Default highlight color
 
-const handleColorChange = (event) => {
-  setHighlightColor(event.target.value);
-};
-
-const applyHighlightColor = () => {
-  const selection = window.getSelection();
-  if (selection.rangeCount > 0) {
-    const range = selection.getRangeAt(0);
-    const span = document.createElement('span');
-    span.style.backgroundColor = highlightColor;
-    range.surroundContents(span);
-  }
-};
 
   return (
     <>
@@ -284,6 +468,7 @@ const applyHighlightColor = () => {
                                     className="contact-dropdownlist-text focus-input"
                                     placeholder="SEARCH..."
                                     onChange={handleInputChange}
+                                    value={searchTerm}
                                   />
                                   <div className="contact-dropdownlist-menu">
                                     <table>
@@ -311,29 +496,69 @@ const applyHighlightColor = () => {
                           </label>
                           <div className="contact-name-textbox">
                             <input
+                            value={name}
                               type="text"
                               className="contact-name-textboxx"
                               placeholder="NAME"
-                            ></input>
+                              pattern="[A-Za-z\s]*"
+                              onInvalid={(e) =>
+                                e.target.setCustomValidity(
+                                  "Please enter a valid name using only letters and spaces"
+                                )
+                              }
+                              onInput={(e) => {
+                                e.target.setCustomValidity("");
+                                setName(e.target.value);
+                              }}
+                              ref={inputRef}
+                              required
+                            />
                           </div>
-                          <label className="contact-name-lable">E-MAIL</label>
+                          <label className="contact-name-lable">
+                            E-MAIL<span className="contact-span2"> *</span>
+                          </label>
                           <label className="contact-name-lable contact-mobile">
                             MOBILE<span className="contact-span2"> *</span>
                           </label>
                           <div className="contact-name-textbox">
                             <input
                               type="email"
+                              value={email}
                               className="contact-name-email"
                               placeholder="E-MAIL"
-                            ></input>
+                              onInvalid={(e) =>
+                                e.target.setCustomValidity(
+                                  "Please enter a valid email address"
+                                )
+                              }
+                              onInput={(e) => {
+                                e.target.setCustomValidity("");
+                                setEmail(e.target.value);
+                              }}
+                              ref={emailInputRef}
+                              required
+                            />
                             <span>
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </span>
                             <input
-                              type="number"
+                              type="text" // Use text type to apply pattern validation
+                              value={mobile}
                               className="contact-name-email"
                               placeholder="MOBILE"
-                            ></input>
+                              pattern="\d{10}" // Pattern to ensure exactly 10 digits
+                              onInvalid={(e) =>
+                                e.target.setCustomValidity(
+                                  "Please enter a valid mobile number with exactly 10 digits"
+                                )
+                              }
+                              onInput={(e) => {
+                                e.target.setCustomValidity("");
+                                setMobile(e.target.value);
+                              }}
+                              ref={mobileInputRef}
+                              required
+                            />
                           </div>
                           <div className="contact-commentbox">
                             <label className="contact-name-lable">
@@ -368,9 +593,13 @@ const applyHighlightColor = () => {
                                   <FaUnderline />
                                 </button>
 
-                                <div className="dropdown">
+                                <div
+                                  className="dropdown"
+                                  style={{ position: "inherit" }}
+                                >
                                   <button
                                     className="commentbox-header-c"
+                                    style={{ paddingLeft: "8px" }}
                                     onMouseDown={saveSelection}
                                     onClick={() =>
                                       setIsFontFamilyDropdownOpen(
@@ -401,7 +630,10 @@ const applyHighlightColor = () => {
                                   )}
                                 </div>
 
-                                <div className="dropdown">
+                                <div
+                                  className="dropdown"
+                                  style={{ position: "inherit" }}
+                                >
                                   <button
                                     className="commentbox-header-fontsize"
                                     onClick={() =>
@@ -430,87 +662,216 @@ const applyHighlightColor = () => {
                                   )}
                                 </div>
 
-
-
-
-
-
+                                <button
+                                  className="commentbox-header-aa"
+                                  onClick={() => applyHighlightColor()}
+                                  style={{ backgroundColor: highlightColor }}
+                                >
+                                  <PiTextAaBold />
+                                </button>
+                                <button
+                                  className="commentbox-header-color"
+                                  onClick={() =>
+                                    document
+                                      .getElementById("colorInput")
+                                      .click()
+                                  }
+                                >
+                                  <FaCaretDown className="comment-icon" />
+                                  <input
+                                    id="colorInput"
+                                    type="color"
+                                    onChange={handleColorChange}
+                                    style={{
+                                      visibility: "hidden",
+                                      position: "absolute",
+                                      left: "20%",
+                                      top: "23%",
+                                      width: 0,
+                                      height: 0,
+                                    }}
+                                  />
+                                </button>
 
                                 <button
-  className="commentbox-header-aa"
-  onClick={() => applyHighlightColor()}
-  style={{ backgroundColor: highlightColor }}
->
-  <PiTextAaBold />
-</button>
-<button
-  className="commentbox-header-color"
-  onClick={() => document.getElementById('colorInput').click()}
->
-  <FaCaretDown className="comment-icon" />
-  <input
-    id="colorInput"
-    type="color"
-    onChange={handleColorChange}
-    style={{
-      position: 'absolute',
-      left:"30%",
-      opacity: 0,
-      cursor: 'pointer',
-    }}
-  />
-</button>
-
-
-
-
-
-                                <button className="commentbox-header-orderlist">
+                                  className="commentbox-header-orderlist"
+                                  onClick={handleOrderListClick}
+                                >
                                   <MdFormatListNumbered />
                                 </button>
-                                <button className="commentbox-header-unorderlist">
+
+                                <button
+                                  className="commentbox-header-unorderlist"
+                                  onClick={handleUnorderListClick}
+                                >
                                   <MdFormatListBulleted />
                                 </button>
-                                <button className="commentbox-header-list">
+
+                                <button
+                                  onClick={handledropdownText}
+                                  className="commentbox-header-list"
+                                >
                                   <MdFormatAlignLeft />
                                   <FaCaretDown className="comment-icon" />
                                 </button>
-                                <button className="commentbox-header-listt">
-                                  <PiTextTBold />
+
+                                {showtextDropdown && (
+                                  <div className="dropdown-menu12">
+                                    <button
+                                      onClick={handleAlignLeft}
+                                      className="commentbox-header-list"
+                                    >
+                                      <CiTextAlignLeft />
+                                    </button>
+                                    <button
+                                      onClick={handleAlignCenter}
+                                      className="commentbox-header-list"
+                                    >
+                                      <CiTextAlignCenter />
+                                    </button>
+                                    <button
+                                      onClick={handleAlignRight}
+                                      className="commentbox-header-list"
+                                    >
+                                      <CiTextAlignRight />
+                                    </button>
+                                  </div>
+                                )}
+
+                                <button
+                                  className="commentbox-header-listt"
+                                  onClick={handlePaddingAdjustClick}
+                                >
+                                  <FaTextHeight />
+
                                   <FaCaretDown className="comment-icon" />
                                 </button>
-                                <button className="commentbox-header-table">
+
+                                <button
+                                  className="commentbox-header-table"
+                                  onClick={handleInsertTableClick}
+                                >
                                   <ImTable2 />
-                                  <FaCaretDown className="comment-icon" />
                                 </button>
-                                <button className="commentbox-header-link">
+
+                                {showModal && (
+                                  <div className="modal">
+                                    <div className="modal-content">
+                                      <h2 style={{ color: "#828bb2" }}>
+                                        Insert Table
+                                      </h2>
+                                      <label className="contact-row-lable">
+                                        Rows:
+                                        <input
+                                          type="number"
+                                          className="contact-row1-textboxx"
+                                          value={rows}
+                                          onChange={(e) =>
+                                            setRows(Number(e.target.value))
+                                          }
+                                          min="1"
+                                        />
+                                      </label>
+                                      <br />
+                                      <label className="contact-row-lable">
+                                        Columns:
+                                        <input
+                                          type="number"
+                                          className="contact-row-textboxx"
+                                          value={cols}
+                                          onChange={(e) =>
+                                            setCols(Number(e.target.value))
+                                          }
+                                          min="1"
+                                        />
+                                      </label>
+                                      <br />
+                                      <button
+                                        onClick={() => insertTable(rows, cols)}
+                                        className="popup-table-btn"
+                                      >
+                                        Insert
+                                      </button>
+                                      <button
+                                        onClick={() => setShowModal(false)}
+                                        className="popup-table-btn2"
+                                      >
+                                        Cancel
+                                      </button>
+                                    </div>
+                                  </div>
+                                )}
+
+                                <button
+                                  className="commentbox-header-link"
+                                  onClick={handleLinkButtonClick}
+                                >
                                   <MdOutlineLink />
                                 </button>
+                                {showLinkModal && (
+                                  <div className="modal2">
+                                    <div className="modal-content2">
+                                      <h2 style={{ color: "#828bb2" }}>
+                                        Insert Link
+                                      </h2>
+                                      <input
+                                        type="text"
+                                        value={linkURL}
+                                        onChange={(e) =>
+                                          setLinkURL(e.target.value)
+                                        }
+                                        placeholder="Enter URL"
+                                        className="contact-link-textbox"
+                                      />
+                                      <div className="button-container">
+                                        <button
+                                          onClick={handleInsertLink}
+                                          className="popup-link-btn"
+                                        >
+                                          Insert Link
+                                        </button>
+                                        <button
+                                          onClick={() =>
+                                            setShowLinkModal(false)
+                                          }
+                                          className="popup-link-btn2"
+                                        >
+                                          Cancel
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
 
                               <div
                                 id="myTextarea"
                                 ref={textareaRef}
+                                onMouseUp={saveSelection}
                                 rows="4"
                                 cols="80"
                                 contentEditable={true}
                                 placeholder="Your text here..."
                                 className="contact-dropdownlist-text focus-input"
                                 onInput={saveSelection}
+                                style={{ paddingTop: `${paddingTop}px` }}
                               ></div>
 
                               <div
                                 className="custom-resize-handle"
                                 ref={handleRef}
                               >
-                                <FaGripLines className="comment-icon" />
+                                <FaGripLines className="comment-icon" style={{marginTop:"7px"}} />
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <button className="comment-submit-btn">
-                        C R E A T E
+                      <button
+                        className="comment-submit-btn" style={{marginTop:"20px"}}
+                        onClick={handleSubmit}
+                      >
+                        <AiOutlineCheck /> C R E A T E
                       </button>
                     </div>
                   </div>
