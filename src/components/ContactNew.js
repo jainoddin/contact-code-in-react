@@ -156,7 +156,7 @@ const ContactNew = ({ onAddContact }) => {
     setIsActive3(!isActive3);
   };
 
-  const [selectedFontSize, setSelectedFontSize] = useState("16px");
+  const [selectedFontSize, setSelectedFontSize] = useState("12px");
   const [savedRange, setSavedRange] = useState(null);
   const fontSizes = ["12px", "14px", "16px", "18px", "20px"];
   const [value, setValue] = useState("7");
