@@ -949,20 +949,17 @@
   }
 }
 
-
-
-
 @media (max-width: 768px) {
-  .contact-lable2{
+  .contact-lable2 {
     display: none;
   }
 }
 
 @media (max-width: 1024px) {
-  .contact-lable2{
+  .contact-lable2 {
     display: none;
   }
-  .contact-down-icon{
+  .contact-down-icon {
     position: absolute;
     left: 88%;
   }
@@ -980,15 +977,13 @@
 }
 
 @media (max-width: 320px) {
-  .contact-down-icon{
-   display: none;
+  .contact-down-icon {
+    display: none;
   }
   .card-2 {
- 
     width: 33vh;
-    
   }
-  .contact-dropdownlist-text{
+  .contact-dropdownlist-text {
     width: 31vh;
   }
   .comment-submit-btn {
@@ -1000,7 +995,7 @@
   }
   .contact-name-lable {
     color: #828bb2;
-  
+
     font-size: 12px;
     padding: 5px;
     padding-top: 10px;
@@ -1018,9 +1013,5 @@
     position: relative;
     top: 80px;
     left: -55px;
-    
   }
-
-  
-
 }

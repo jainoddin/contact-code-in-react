@@ -725,6 +725,7 @@ function ContactList() {
                 </div>
                 <div className="contact-body">
                   <div className="card elevation">
+                    
                     <table>
                       <thead>
                         <tr className="contact-header-tr">
@@ -859,7 +860,7 @@ function ContactList() {
                       {getPageNumbers().map((number) => (
                         <button
                           key={number}
-                          className={`contact-footer-btn ${
+                          className={`contact-footer-btn2 ${
                             currentPage === number ? "active" : ""
                           }`}
                           onClick={() => handlePageChange(number)}

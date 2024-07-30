@@ -115,7 +115,7 @@
   height: 28px;
   display: inline-block;
   position: relative;
-  left: 21%;
+  left: 21.5%;
   top: 3px;
   border-radius: 25px;
 }
@@ -283,9 +283,12 @@
 .contact-footer-btn {
   margin-right: 10px; /* add some space between elements */
 }
+.contact-footer-btn2 {
+  margin-right: 10px; /* add some space between elements */
+}
 .contact-page-btn {
   position: relative;
-  left: 60%;
+  left: 61%;
   padding-bottom: 10px;
 }
 .contact-page-btn button {
@@ -1605,4 +1608,29 @@
 
 .create-button:hover {
   background: #6a42cc;
+}
+
+@media (max-width: 1024px) {
+
+.contact-header-icons{
+display: none;
+}
+
+
+.card {
+  overflow: scroll;
+}
+.contact-footer-btn2 {
+display: none; /* add some space between elements */
+}
+
+}
+
+@media (max-width: 768px) {
+.sidebar-main{
+  display: none;
+}
+.contact{
+  width: 150vh;
+}
 }
