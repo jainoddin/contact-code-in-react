@@ -1014,4 +1014,8 @@
     top: 80px;
     left: -55px;
   }
+  .siderbar-container{
+    display: none;
+
+  }
 }

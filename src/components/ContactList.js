@@ -672,7 +672,7 @@ function ContactList() {
     <>
       <div style={{ overflow: "hidden" }}>
         <div className="row" style={{ overflow: "hidden" }}>
-          <div className="col-sm-2 between-sm-3-and-4">
+          <div className="col-sm-2 between-sm-3-and-4 siderbar-container" >
             <h1 className="sidebar">Sidebar</h1>
           </div>
           <div className="col-sm-9 contact">
