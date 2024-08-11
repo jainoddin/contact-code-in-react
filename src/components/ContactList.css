@@ -1634,3 +1634,36 @@ display: none; /* add some space between elements */
   width: 150vh;
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.plussymble{
+  display: none;
+}
+.even-number-row{
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .plussymble{
+    display:inline;
+   color: blue;
+  }
+  .even-number-row{
+   display: block;
+  }
+  .actioncontact{
+    display: none;
+  }
+}

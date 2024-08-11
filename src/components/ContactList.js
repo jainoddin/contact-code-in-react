@@ -758,7 +758,7 @@ function ContactList() {
                             ></i>{" "}
                             EMAIL
                           </th>
-                          <th>
+                          <th className="actioncontact">
                             <i
                               className="fa fa-arrow-down fa-5x"
                               id="icon-id"
@@ -768,57 +768,72 @@ function ContactList() {
                         </tr>
                       </thead>
                       <tbody>
-                        {filteredData
-                          .slice(
-                            (currentPage - 1) * itemsPerPage,
-                            currentPage * itemsPerPage
-                          )
-                          .map((item, index) => (
-                            <tr key={index} className="contact-body-tr">
-                              <td style={{ paddingLeft: "50px" }}>
-                                {(currentPage - 1) * itemsPerPage + index + 1}
-                              </td>
-                              <td>{item.NAME}</td>
-                              <td>{item.CATEGORY}</td>
-                              <td>{item.MOBILE}</td>
-                              <td>{item.EMAIL}</td>
-                              <td>
-                                <button
-                                  id={`select-btn-${item.SL}`}
-                                  className={`select-btn ${
-                                    selectedItem && selectedItem.SL === item.SL
-                                      ? "selected"
-                                      : ""
-                                  }`}
-                                  onClick={(e) => handleSelectBtnClick(e, item)}
-                                >
-                                  {item.ACTIONS}{" "}
-                                  <i
-                                    className="fa fa-arrow-down fa-5x"
-                                    id="icon-id"
-                                  ></i>
-                                </button>
-                                <div
-                                  className="select-dropdown"
-                                  id={`select-dropdown-${item.SL}`}
-                                  style={{ display: "none" }}
-                                >
-                                  <ul>
-                                    <li
-                                      onClick={() => handleEditClick(item)}
-                                      className="contact-list-edit"
-                                    >
-                                      EDIT
-                                    </li>
-                                    <li onClick={() => handleDeleteClick(item)}>
-                                      DELETE
-                                    </li>
-                                  </ul>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                      </tbody>
+  {filteredData
+    .slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    )
+    .map((item, index) => (
+      <React.Fragment key={index}>
+        {/* Main Data Row */}
+        <tr className="contact-body-tr">
+          <td style={{ paddingLeft: "50px" }}>
+            <span className="plussymble">+</span>  
+            {(currentPage - 1) * itemsPerPage + index + 1}
+          </td>
+          <td>{item.NAME}</td>
+          <td>{item.CATEGORY}</td>
+          <td>{item.MOBILE}</td>
+          <td>{item.EMAIL}</td>
+          <td className="actioncontact">
+            <button
+              id={`select-btn-${item.SL}`}
+              className={`select-btn ${
+                selectedItem && selectedItem.SL === item.SL
+                  ? "selected"
+                  : ""
+              }`}
+              onClick={(e) => handleSelectBtnClick(e, item)}
+            >
+              {item.ACTIONS}{" "}
+              <i
+                className="fa fa-arrow-down fa-5x"
+                id="icon-id"
+              ></i>
+            </button>
+            <div
+              className="select-dropdown"
+              id={`select-dropdown-${item.SL}`}
+              style={{ display: "none" }}
+            >
+              <ul>
+                <li
+                  onClick={() => handleEditClick(item)}
+                  className="contact-list-edit"
+                >
+                  EDIT
+                </li>
+                <li onClick={() => handleDeleteClick(item)}>
+                  DELETE
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        {/* New Row for Even-Indexed Rows */}
+        
+          <tr className="even-number-row">
+            <td colSpan="6" style={{ paddingLeft: "50px" }}>
+              evennumber
+            </td>
+          </tr>
+      
+      </React.Fragment>
+    ))}
+</tbody>
+
+
                     </table>
                   </div>
 
